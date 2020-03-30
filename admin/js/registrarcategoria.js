@@ -31,7 +31,7 @@ function getCategoryData() {
                       data-toggle="tooltip"
                       data-placement="top"
                       title="Edit"
-                      onclick="editCategory(${category.IdCategoria})"
+                      onclick = "location.href='editarCategoria.html?IdCategoria=${category.IdCategoria}'"
                   >
                       <i class="zmdi zmdi-edit"></i>
                   </button>
@@ -65,14 +65,14 @@ function getCategoryData() {
   });
 }
 
-function editCategory(categoryId) {
+function editCategory(categoryId, name, desc) {
   let category = {};
   if (categoryId) {
     // Haces tu desvergue de modificar el objeto de la categoria
     // Ejemplo:
     category.id = categoryId;
-    category.name = 'Nombre modificado';
-    category.description = 'Descripcion modificada';
+    category.name = name;
+    category.description = desc;
     $.post('php/modificarCategoria.php', { category: JSON.stringify(category) }, response => {
       let resp = JSON.parse(response);
       if (resp.status === 200) {
@@ -80,6 +80,38 @@ function editCategory(categoryId) {
         document.getElementById(`category-desc-${category.id}`).innerHTML = category.description;
       }
     });
+  } else {
+    console.log('No se mando bien la funcion');
+    // TODO: Hacer un msj que se le muestre al usuario que hubo un error
+  }
+}
+
+
+function getQueryVariable(categoryId)
+{
+       const query = window.location.search.substring(1);
+       const vars = query.split("&");
+       for (var i in vars) {
+               let pair = vars[i].split("=");
+               console.log('Pair: ' + pair);
+               if(pair[0] === categoryId){ getDataFromId(pair[1]) ;}
+       }
+       return (false);
+}
+
+function getDataFromId(categoryId){
+  let category = {};
+  if (categoryId) {
+    category.id = categoryId;
+    console.log('ID: ' + category.id);
+
+    $.post('php/obtieneCamposCategoria.php', { category: JSON.stringify(category) }, response => {
+      let resp = JSON.parse(response);
+      console.log(resp); 
+        document.getElementById('category').placeholder = resp.Nombre ;
+        document.getElementById('description').placeholder = resp.Descripcion;
+    });
+
   } else {
     console.log('No se mando bien la funcion');
     // TODO: Hacer un msj que se le muestre al usuario que hubo un error

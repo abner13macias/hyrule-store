@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once 'config.php';
-    $query = "SELECT Nombre, Descripcion FROM categoria";
+    $query = "SELECT * FROM categoria";
     $result = mysqli_query($db,$query);
 
     if (!isset($response)) {

@@ -5,7 +5,7 @@
 ### Negocios Electrónicos II
 
 Equipo conformado por:
-* Abner Macias
+* [Abner Macias](https://github.com/abner13macias)
 * Joel Escobar
 * Guadalape Alcalá
 * Eduardo Valadez

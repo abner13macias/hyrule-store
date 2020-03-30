@@ -1,8 +1,8 @@
 <?php
     session_start();
-    require_once 'config.php';    
-    $categoryObj = json_decode($_POST['category']);
-    $query = "SELECT Nombre,Descripcion FROM categoria WHERE IdCategoria = $categoryObj->id";
+    require_once 'config.php';
+    $categoryId = json_decode($_POST['categoryId']);
+    $query = "SELECT Nombre,Descripcion FROM categoria WHERE IdCategoria = $categoryId";
     $result = mysqli_query($db,$query);
 
     if (!isset($response)) {
@@ -10,7 +10,7 @@
     }
 
     if($result) {
-        $response->data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $response->data = mysqli_fetch_assoc($result);
         echo json_encode($response);
         mysqli_close($db);
     } else {

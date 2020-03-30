@@ -13,8 +13,8 @@ function getCategoryData() {
                       <span class="au-checkmark"></span>
                   </label>
               </td>
-              <td>${category.Nombre}</td>
-              <td class="desc">${category.Descripcion}</td>
+              <td id="category-name-${category.IdCategoria}">${category.Nombre}</td>
+              <td id="category-desc-${category.IdCategoria}" class="desc">${category.Descripcion}</td>
 
               <td>
                   <div class="table-data-feature">
@@ -68,17 +68,17 @@ function getCategoryData() {
 function editCategory(categoryId) {
   let category = {};
   if (categoryId) {
-    console.log(categoryId);
     // Haces tu desvergue de modificar el objeto de la categoria
     // Ejemplo:
     category.id = categoryId;
     category.name = 'Nombre modificado';
     category.description = 'Descripcion modificada';
-    console.log(category);
-    category = JSON.stringify(category);
-    $.post('php/modificarCategoria.php', { category }, response => {
+    $.post('php/modificarCategoria.php', { category: JSON.stringify(category) }, response => {
       let resp = JSON.parse(response);
-      console.log(resp);
+      if (resp.status === 200) {
+        document.getElementById(`category-name-${category.id}`).innerHTML = category.name;
+        document.getElementById(`category-desc-${category.id}`).innerHTML = category.description;
+      }
     });
   } else {
     console.log('No se mando bien la funcion');

@@ -5,7 +5,6 @@ function getCategoryData() {
       /* Create category table row for each category on the response */
       let categoryRow = document.createElement('tr');
       categoryRow.className = 'tr-shadow';
-
       categoryRow.innerHTML = `
               <td>
                   <label class="au-checkbox">
@@ -40,6 +39,7 @@ function getCategoryData() {
                       data-toggle="tooltip"
                       data-placement="top"
                       title="Delete"
+                      onclick = "deleteCategory(${category.IdCategoria});"
                   >
                       <i class="zmdi zmdi-delete"></i>
                   </button>
@@ -60,7 +60,22 @@ function getCategoryData() {
       spacer.className = 'spacer';
 
       document.getElementById('listaCategorias').appendChild(categoryRow);
-      document.getElementById('listaCategorias').appendChild(spacer);
+      document.getElementById('listaCategorias').appendChild(spacer);      
     }
   });
+}
+
+function deleteCategory(categoryId){        
+    let category = {};    
+    category.id = categoryId;
+    var deletOptn = confirm("¿Desea eliminar la categoria?");
+    if(deletOptn == true){
+        if(categoryId){
+        category = JSON.stringify(category);
+            $.post('php/bajaCategoria.php', { category }, response => {
+                let resp = JSON.parse(response);
+                location.reload();
+            });        
+        }
+    }    
 }

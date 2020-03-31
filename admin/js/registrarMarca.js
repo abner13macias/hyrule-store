@@ -4,7 +4,7 @@ function getMarcaData() {
     for (const marca of resp.data) {
       /* Create marca table row for each marca on the response */
       let marcaRow = document.createElement('tr');
-      categoryRow.className = 'tr-shadow';
+      marcaRow.className = 'tr-shadow';
 
       marcaRow.innerHTML = `
               <td>

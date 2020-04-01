@@ -7,8 +7,8 @@
                   empleado.ApellidoPaterno = '$categoryObj->patern',
                   empleado.ApellidoMaterno = '$categoryObj->matern',
                   empleado.Telefono = '$categoryObj->phone',
-                  empleado.mail = '$categoryObj->mail',
-                  rol.IdRol = '$categoryObj->rol'
+                  empleado.email = '$categoryObj->mail',
+                  empleado.IdRol = '$categoryObj->rol'
               WHERE empleado.IdEmpleado = $categoryObj->id AND empleado.IdRol = rol.Id_Rol";
     if (!isset($response)) {
         $response = new stdClass();

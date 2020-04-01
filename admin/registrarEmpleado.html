@@ -190,7 +190,7 @@
 
         <script>
             function submitFormData() {
-                const employeeName = $('input[name=name]').val();
+                const employeeName = $('input[name=employee]').val();
                 const ap_Patern = $('input[name=ap-p]').val();
                 const ap_Matern = $('input[name=ap-m]').val();
                 const telefono = $('input[name=telefono]').val();
@@ -206,7 +206,7 @@
                     pass,
                     idRol
                 });
-                $.post('php/altaCategoria.php', { employee }, response => {
+                $.post('php/altaEmpleado.php', { employee }, response => {
                     let resp = JSON.parse(response);
                     $('#response-message-container').html(resp.message);
                     $('#response-message-container').addClass(resp.class);

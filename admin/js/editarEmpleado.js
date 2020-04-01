@@ -3,6 +3,7 @@ function getEmployeeInfo() {
     if (employeeId) {
       $.post('php/obtieneCamposEmpleado.php', { employeeId }, response => {
         let resp = JSON.parse(response);
+        console.log(resp.message);
         if (resp.data) {
           $('input[name=employee]').val(resp.data.Nombre);
           $('input[name=ap-p]').val(resp.data.ApellidoPaterno);
@@ -12,9 +13,9 @@ function getEmployeeInfo() {
           $('input[name=rol]').val(resp.data.NombreRol);
         } else {
           $('#response-message-container').html(
-            'No se pudo obtener la informacion de la categoría seleccionada'
+            'No resp.data'
           );
-          $('#response-message-container').addClass('error');
+          $('No se pudo obtener la informacion de la categoría seleccionada').addClass('error');
         }
       });
     } else {

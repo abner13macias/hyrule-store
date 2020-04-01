@@ -11,7 +11,6 @@ function getRolData(rolName) {
           if(rolName===rol.NombreRol){
             option.selected = 'selected';
           }
-          console.log(option.value);
           let optionText = document.createTextNode(rol.NombreRol);
           option.appendChild(optionText);
           rolRow.appendChild(option);
@@ -35,7 +34,6 @@ function getRolData(rolName) {
       for (const rol of resp.data) {
           let option = document.createElement('option');
           option.value = rol.Id_Rol;
-          console.log(option.value);
           let optionText = document.createTextNode(rol.NombreRol);
           option.appendChild(optionText);
           rolRow.appendChild(option);

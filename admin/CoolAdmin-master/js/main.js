@@ -341,7 +341,7 @@
           datasets: [
             {
               label: "My First dataset",
-              data: [60, 40],
+              data: [50, 50],
               backgroundColor: [
                 '#00b5e9',
                 '#fa4251'

@@ -31,7 +31,7 @@ function getProveedorData() {
                       data-toggle="tooltip"
                       data-placement="top"
                       title="Edit"
-                      onclick = "location.href='editarProveedor.html?IdCategoria=${proveedor.Id_Proveedor}'"
+                      onclick = "location.href='editarProveedor.html?Id_Proveedor=${proveedor.Id_Proveedor}'"
                   >
                       <i class="zmdi zmdi-edit"></i>
                   </button>
@@ -73,7 +73,7 @@ function deleteProveedor(proveedorId){
     if(deletOptn == true){
         if(proveedorId){
         proveedor = JSON.stringify(proveedor);
-            $.post('php/bajaCategoria.php', { proveedor }, response => {
+            $.post('php/bajaProveedor.php', { proveedor }, response => {
                 let resp = JSON.parse(response);
                 location.reload();
             });        

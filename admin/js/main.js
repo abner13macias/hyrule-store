@@ -332,6 +332,20 @@
     }
 
     // Percent Chart
+    var arrayNombre = [];
+    var arrayCantidad = [];
+    
+    $.get('php/obtieneGraficaConsola.php', response => {
+    let resp = JSON.parse(response);
+    for(const console of resp.data){
+        arrayNombre.push(console.Nombre);
+        arrayCantidad.push(parseInt(console.Cantidad));
+        
+    }
+    });
+    console.log(arrayCantidad);
+
+    //---
     var ctx = document.getElementById("percent-chart");
     if (ctx) {
       ctx.height = 280;
@@ -341,7 +355,7 @@
           datasets: [
             {
               label: "My First dataset",
-              data: [1, 99],
+              data: arrayCantidad,
               backgroundColor: [
                 '#00b5e9',
                 '#fa4251'
@@ -359,10 +373,7 @@
               ]
             }
           ],
-          labels: [
-            'Products',
-            'Services'
-          ]
+          labels: arrayNombre
         },
         options: {
           maintainAspectRatio: false,

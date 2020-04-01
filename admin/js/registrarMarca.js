@@ -39,6 +39,7 @@ function getMarcaData() {
                       data-toggle="tooltip"
                       data-placement="top"
                       title="Delete"
+                      onclick = "deleteMarca(${marca.IdMarca});"
                   >
                       <i class="zmdi zmdi-delete"></i>
                   </button>
@@ -62,4 +63,19 @@ function getMarcaData() {
       document.getElementById('listaMarcas').appendChild(spacer);
     }
   });
+}
+
+function deleteMarca(marcaId){        
+    let marca = {};    
+    marca.id = marcaId;
+    var deletOptn = confirm("¿Desea eliminar la marca?");
+    if(deletOptn == true){
+        if(marcaId){
+        marca = JSON.stringify(marca);
+            $.post('php/bajaMarca.php', { marca }, response => {
+                let resp = JSON.parse(response);
+                location.reload();
+            });        
+        }
+    }    
 }

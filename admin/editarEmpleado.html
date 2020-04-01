@@ -69,7 +69,7 @@
     <link href="css/registrarcategoria.css" rel="stylesheet" media="all" />
   </head>
 
-  <body class="animsition" onload="getEmployeeInfo()">
+  <body class="animsition" onload="getEmployeeInfo();">
     <div class="page-wrapper">
       <div class="page-content--bge5">
         <div class="container">
@@ -128,13 +128,16 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label>Rol</label>
+                    <label>Contraseña</label>
                     <input
-                      id="rol"
+                      id="pass"
                       class="au-input au-input--full"
-                      type="text"
-                      name="rol"
+                      type="password"
+                      name="pass"
                     />
+                  </div>
+                  <div class="form-group" id="rolSelect">
+                    <label>Rol</label>
                   </div>
 
                   <button
@@ -175,6 +178,7 @@
 
     <!-- File Custom JS -->
     <script src="js/editarEmpleado.js"></script>
+    <script src="js/llenaselect.js"></script>
   </body>
 </html>
 <!-- end document-->

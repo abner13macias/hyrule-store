@@ -11,6 +11,7 @@ function getEmployeeInfo() {
           $('input[name=telefono]').val(resp.data.Telefono);
           $('input[name=email]').val(resp.data.email);
           $('input[name=rol]').val(resp.data.NombreRol);
+          getRolData(resp.data.NombreRol);
         } else {
           $('#response-message-container').html(
             'No resp.data'
@@ -25,6 +26,7 @@ function getEmployeeInfo() {
       $('#response-message-container').addClass('error');
     }
   }
+  
   
   function getQueryVariable(variableName) {
     const query = window.location.search.substring(1);
@@ -48,7 +50,7 @@ function getEmployeeInfo() {
       employee.matern = $('input[name=ap-m]').val();
       employee.phone = $('input[name=telefono]').val();
       employee.mail = $('input[name=email]').val();
-      employee.rol = $('input[name=rol]').val();
+      employee.rol = $('select[name=selectRol]').val();
       employee = JSON.stringify(employee);
       $.post('php/modificarEmpleado.php', { employee }, response => {
         let resp = JSON.parse(response);

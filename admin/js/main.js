@@ -332,21 +332,21 @@
     }
 
     // Percent Chart
-    var arrayNombre = [];
-    var arrayCantidad = [];
-    
+    /*var arrayNombre = []; 
+    var arrayCantidad = [];    
     $.get('php/obtieneGraficaConsola.php', response => {
     let resp = JSON.parse(response);
-    for(const console of resp.data){
-        arrayNombre.push(console.Nombre);
-        arrayCantidad.push(parseInt(console.Cantidad));
-        
-    }
+      for(var console of resp.data){
+          arrayNombre.push(console.Nombre);
+          arrayCantidad.push(console.Cantidad);   
+      }
     });
-    console.log(arrayCantidad);
-
     //---
-    var ctx = document.getElementById("percent-chart");
+    console.log(arrayCantidad);
+    
+    //console.log(arrayPrueba);*/
+
+    var ctx = document.getElementById("percent-chart3");
     if (ctx) {
       ctx.height = 280;
       var myChart = new Chart(ctx, {
@@ -395,6 +395,8 @@
           }
         }
       });
+
+      console.log(myChart.data);
     }
 
   } catch (error) {
@@ -641,7 +643,7 @@
           datasets: [
             {
               label: "My First dataset",
-              data: [60, 40],
+              data: [4,5],
               backgroundColor: [
                 '#00b5e9',
                 '#fa4251'

@@ -3,8 +3,27 @@
     require_once 'config.php';
     $query = "SELECT `Nombre`, COUNT(`IdConsola`) AS 'Cantidad' FROM consola GROUP BY `Nombre` ORDER BY COUNT(`IdConsola`) DESC";
     $result = mysqli_query($db,$query);
+    // Hacemos un bucle con los datos obntenidos
+    $data = array();
+    foreach ($result as $row) {
+        $data[] = $row;
+    }
 
-    if (!isset($response)) {
+    // Limpiamos memoria consumida al extraer los datos
+    $result->close();
+
+    // Cerramos la conexión a la Base de Datos
+    mysqli_close($db);
+
+    // Mostramos los datos en formato JSON
+    print json_encode($data);
+
+    //var_dump($data);
+
+
+
+
+    /*if (!isset($response)) {
         $response = new stdClass();
     }
 
@@ -17,3 +36,4 @@
         echo json_encode($response);
         mysqli_close($db);
     }
+*/

@@ -3,6 +3,7 @@ function getEmployeeInfo() {
     if (employeeId) {
       $.post('php/obtieneCamposEmpleado.php', { employeeId }, response => {
         let resp = JSON.parse(response);
+        console.log(resp.message);
         if (resp.data) {
           $('input[name=employee]').val(resp.data.Nombre);
           $('input[name=ap-p]').val(resp.data.ApellidoPaterno);

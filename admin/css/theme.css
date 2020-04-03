@@ -266,9 +266,9 @@ section {
 
 /* ----- Page Wrapper----- */
 /*Override Grid Bootstrap*/
-@media (min-width: 1200px) {
+@media (min-width: 1600px) {
     .container {
-        max-width: 1320px;
+        max-width: 1520px;
     }
 }
 

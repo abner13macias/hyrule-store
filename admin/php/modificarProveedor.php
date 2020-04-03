@@ -6,7 +6,7 @@
               SET Nombre = '$categoryObj->name',
                   Direccion = '$categoryObj->direccion',
                   Telefono = '$categoryObj->telefono'
-              WHERE Id_Proveedor = $categoryObj->id;
+              WHERE Id_Proveedor = $categoryObj->id";
     if (!isset($response)) {
         $response = new stdClass();
     }

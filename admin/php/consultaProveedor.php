@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once 'config.php';
-    $query = "SELECT * FROM proveedor";
+    $query = "SELECT * FROM `proveedor`";
     $result = mysqli_query($db,$query);
 
     if (!isset($response)) {

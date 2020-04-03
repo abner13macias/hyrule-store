@@ -13,6 +13,7 @@
 
     if($result) {
         $response->data = mysqli_fetch_assoc($result);
+        $response->message = 'Tabla cargada';
         echo json_encode($response);
         mysqli_close($db);
     } else {

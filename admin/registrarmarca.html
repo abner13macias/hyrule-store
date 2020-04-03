@@ -154,22 +154,8 @@
 
         <!-- Main JS-->
         <script src="js/main.js"></script>
-
-        <script>
-            function submitFormData() {
-                const marcaName = $('input[name=marca]').val();
-                const description = $('input[name=description]').val();
-                const marca = JSON.stringify({
-                    marcaName,
-                    description
-                });
-                $.post('php/altaMarca.php', { marca }, response => {
-                    let resp = JSON.parse(response);
-                    $('#response-message-container').html(resp.message);
-                    $('#response-message-container').addClass(resp.class);
-                });
-            }
-        </script>
     </body>
 </html>
 <!-- end document-->
+
+    

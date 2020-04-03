@@ -35,7 +35,7 @@
 
 </head>
 
-<body class="animsition">
+<body class="animsition" onload="getUserRegistrados()">
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
@@ -450,45 +450,41 @@
                                 </div>
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
+                                        <!--<div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                        </div>--->
+                                        <div class="content" id="nombreuser">
+
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                                        <img src="images/icon/user.png" alt="User" />
                                                     </a>
                                                 </div>
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">john doe</a>
-                                                    </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                <div class="content" id="nombreuser2">
+                                                    
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
+                                                <div class="account-dropdown__item" id="cuentauser">
+                                                    
                                                 </div>
                                                 <!--
                                                 <div class="account-dropdown__item">
                                                     <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
+                                                        <i class="zmdi zmdi-settings"></i>Ajustes</a>
                                                 </div>
                                                 <div class="account-dropdown__item">
                                                     <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                                        <i class="zmdi zmdi-money-box"></i>Facturacion</a>
                                                 </div>
-                                                -->
+                                            -->
                                             </div>
                                             <div class="account-dropdown__footer">
                                                 <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                    <i class="zmdi zmdi-power"></i>Log out</a>
                                             </div>
                                         </div>
                                     </div>
@@ -641,6 +637,7 @@
     <script type="text/javascript" src="js/datosGraficaVentasFinalizadas.js"></script>
     <script type="text/javascript" src="js/datosGraficaVentasProceso.js"></script>
     <script type="text/javascript" src="js/datosGraficaVentasStatus.js"></script>
+    <script type="text/javascript" src="js/datosEstadisticas.js"></script>
 </body>
 
 </html>

@@ -17,14 +17,15 @@
     <!--
             CSS
             ============================================= -->
-    <link rel="stylesheet" href="css/linearicons.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/nouislider.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/linearicons.css" media="all" >
+    <link rel="stylesheet" href="css/owl.carousel.css" media="all" >
+    <link rel="stylesheet" href="css/font-awesome.min.css" media="all" >
+    <link rel="stylesheet" href="css/themify-icons.css" media="all" >
+    <link rel="stylesheet" href="css/nice-select.css" media="all" >
+    <link rel="stylesheet" href="css/nouislider.min.css" media="all" >
+    <link rel="stylesheet" href="css/bootstrap.css" media="all" >
+    <link rel="stylesheet" href="css/main.css" media="all" >
+    <link rel="stylesheet" href="css/registrarusuario.css" media="all" />
 </head>
 
 <body>
@@ -121,7 +122,7 @@
 				<div class="pruebaCenter">
 					<div class="login_form_inner">
 						<h3>Registro</h3>
-						<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+						<div class="row login_form" id="contactForm" novalidate="novalidate">
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombre'">
                             </div>                            
@@ -132,7 +133,7 @@
 								<input type="text" class="form-control" id="ap_Mat" name="ap_Mat" placeholder="Apellido Materno" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Apellido Materno'">
                             </div>
                             <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="pass" name="pass" placeholder="Contraseña" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contraseña'">
+								<input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contraseña'">
                             </div>
                             <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="address" name="address" placeholder="Dirección" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Dirección'">
@@ -144,12 +145,12 @@
 								<input type="text" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
                             </div>
                             <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="fecha_Nac" name="fecha_Nac" placeholder="Fecha de Nacimiento" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Fecha de Nacimiento'">
+								<input type="text" class="form-control" id="fecha_Nac" name="fecha_Nac" placeholder="Fecha de Nacimiento" onfocus="(this.type='date')" onblur="this.placeholder = 'Fecha de Nacimiento'">
                             </div>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="primary-btn">Registrarme</button>
+								<button type="submit" value="submit" class="primary-btn" onclick="submitFormData()">Registrarme</button>
 							</div>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -237,7 +238,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
-	<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/sendRegisterData.js"></script>
 </body>
 
 </html>

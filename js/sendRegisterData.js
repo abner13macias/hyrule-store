@@ -1,4 +1,4 @@
-function submitFormData() {
+function submitFormData(hashedPassword) {
     const userName = $('input[name=name]').val();
     const ap_Patern = $('input[name=ap_Pat]').val();
     const ap_Matern = $('input[name=ap_Mat]').val();

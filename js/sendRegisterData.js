@@ -23,8 +23,7 @@ function submitFormData(hashedPassword) {
     $.post('php/registrarUsuario.php', { user }, response => {
         let resp = JSON.parse(response);
         console.log(resp.message);
-        $('#response-message-container').html(resp.message);
-        $('#response-message-container').addClass(resp.class);
+        location.href = "index.html";
     });
 }
 

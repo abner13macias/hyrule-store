@@ -130,23 +130,19 @@
 				</div>
 				<div class="col-lg-6">
 					<div class="login_form_inner">
-						<h3>Iniciar Sesion</h3>
-						<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+						<h3>Iniciar Sesión</h3>
+						<form form action="php/login.php" method="post" class="row login_form" id="contactForm" novalidate="novalidate">
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="No,bre de usuario o contraseña" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+								<input type="text" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Contraseña" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
 							<div class="col-md-12 form-group">
-								<div class="creat_account">
-									<input type="checkbox" id="f-option2" name="selector">
-									<label for="f-option2">Mantenerme loggeado</label>
-								</div>
 							</div>
+							<div id="recaptcha" class="g-recaptcha col-md-12 form-group" data-sitekey="6LcDeu0UAAAAAP5M3ugdfyfMEvpi5TZR0_AIqm43"></div>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="primary-btn">Log In</button>
-								<a href="#">¿Olvidaste tu contraseña?</a>
+								<button type="submit" value="submit" class="primary-btn">Iniciar Sesión</button>
 							</div>
 						</form>
 					</div>
@@ -237,6 +233,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/login.js"></script>
+	<script async src='https://www.google.com/recaptcha/api.js?hl=es'></script>
 </body>
 
 </html>

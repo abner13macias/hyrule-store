@@ -7,7 +7,7 @@
         alert('Debes chequear el captcha!')
         window.location.replace('../login.html');
     </SCRIPT>";;}
-    $secretKey = "6LcDeu0UAAAAAH-zbaG01TITp01mTPaggl6e-AuY";
+    $secretKey = "6LfHoO8UAAAAAO25H5xABNKHspmw85ZlNrzEiQ9z";
     $ip = $_SERVER['REMOTE_ADDR'];
     //Chequear captcha con Google
     $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha."&remoteip=".$ip);

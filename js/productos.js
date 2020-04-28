@@ -11,11 +11,11 @@ function getProductData() {
         let singleProduct = document.createElement('div');
         singleProduct.className = 'single-product';        
         singleProduct.innerHTML = `
-                <a href="single-product.html?product=${product.IdProducto}">
+                <a href="single-product.html?product=${product.IdArticulo}">
                 <img class="img-fluid" src="${product.Direccion}" alt="">
                 </a>
                 <div class="product-details">
-                    <a href="single-product.html?IdProducto=${product.IdProducto}">
+                    <a href="single-product.html?IdProducto=${product.IdArticulo}">
                     <h6>${product.Nombre}</h6>
                         </a>
                 <div class="price">
@@ -27,11 +27,11 @@ function getProductData() {
                             <span class="ti-bag"></span>
                             <p class="hover-text">Carrito</p>
                         </a>
-                        <a href class="social-info" onclick="addWishList(${product.IdProducto})">
+                        <a href class="social-info" onclick="addWishList(${product.IdArticulo})">
                             <span class="lnr lnr-heart"></span>
                             <p class="hover-text">Wishlist</p>
                         </a>
-                        <a href="single-product.html?IdProduct=${product.IdProducto}" class="social-info">
+                        <a href="single-product.html?IdProduct=${product.IdArticulo}" class="social-info">
                             <span class="lnr lnr-move"></span>
                             <p class="hover-text">Ver más</p>
                         </a>

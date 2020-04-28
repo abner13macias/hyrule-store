@@ -13,9 +13,12 @@ function validarLogin(){
 }
 
 function setToLocalStorage(){
-    try{
+    try{        
         const idUser = getQueryVariable("Id_Usuario");
-        localStorage.setItem("Id_Usuario", idUser);
+        if(idUser){
+            localStorage.setItem("Id_Usuario", idUser);
+        }
+        console.log(localStorage.getItem("Id_Usuario"));
     }
     catch(error){
 

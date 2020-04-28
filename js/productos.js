@@ -46,18 +46,29 @@ function getProductData() {
 function addWishList(idArticulo){
     const idArticle = idArticulo;
     const idUser = localStorage.getItem("Id_Usuario");
+    
     const article = JSON.stringify({
         idArticle,
         idUser
     });
-    console.log(article);
     $.post('php/wishlist.php', { article }, response => {
         let resp = JSON.parse(response);
         alert(resp.message);
     });
 }
 
-  function addCart(){
+  function addCart(idArticulo){
+    const idArticle = idArticulo;
+    const idUser = localStorage.getItem("Id_Usuario");
+
+    const article = JSON.stringify({
+        idArticle,
+        idUser
+    });
+    $.post('php/carrito.php', { article }, response => {
+        let resp = JSON.parse(response);
+        alert(resp.message);
+    });
   }
 
   function getQueryVariable(variableName) {

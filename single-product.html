@@ -29,6 +29,7 @@
 	<link rel="stylesheet" href="css/ion.rangeSlider.css" />
 	<link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/estrellas.css">
 </head>
 
 <body>
@@ -120,31 +121,32 @@
 	<!-- End Banner Area -->
 
 	<!--================Single Product Area =================-->
-	<div class="product_image_area">
+	<body onload="getProductoInfo()"><div class="product_image_area">
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
 					<div class="s_Product_carousel">
 						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+							<img class="img-fluid" name= "imgen1"  alt="">
 						</div>
 						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p2.jpg" alt="">
+							<img class="img-fluid" name= "imgen2"  alt="">
 						</div>
 						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p3.jpg" alt="">
+							<img class="img-fluid" name= "imgen3"  alt="">
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>Nintendo Consola Switch Neon 32GB Version 1.1 - Standard Edition</h3>
-						<h2>$6,850.00</h2>
+						<h3 name="nombre">Nintendo Consola Switch Neon 32GB Version 1.1 - Standard Edition</h3>
+						<h2 name="precio">$6,850.00</h2>
 						<ul class="list">
-							<li><a class="active" href="#"><span>Categoria</span> : Nintendo</a></li>
-							<li><a href="#"><span>Disponibilidad</span> : En Stock</a></li>
+							<li><span>Categoria:</span><a class="active" name="categoria"></a></li>
+							<li><a class="active" name="genero"></a></li>
+							<li><a href="#"name="extra"></a></li><!--consola/conectividad-->
 						</ul>
-						<p>Presentamos Nintendo Switch, el nuevo sistema de videojuego para el hogar de Nintendo; además de proporcionar emociones únicas y multijugador en casa, el sistema Nintendo Switch se puede llevar mientras viaja para que los jugadores puedan disfrutar de una experiencia de consola completa en cualquier momento y en cualquier lugar</p>
+						<p name= "descripcion">Presentamos Nintendo Switch, el nuevo sistema de videojuego para el hogar de Nintendo; además de proporcionar emociones únicas y multijugador en casa, el sistema Nintendo Switch se puede llevar mientras viaja para que los jugadores puedan disfrutar de una experiencia de consola completa en cualquier momento y en cualquier lugar</p>
 						<div class="product_count">
 							<label for="qty">Cantidad:</label>
 							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
@@ -163,19 +165,17 @@
 			</div>
 		</div>
 	</div>
+	</body>
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
-	<section class="product_description_area">
+	<section class="product_description_area" onload="getProductoDescripcion()">
 		<div class="container">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item">
 					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Descripción</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-					 aria-selected="false">Especificación</a>
-				</li>
+				
 			<!--<li class="nav-item">
 					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
 					 aria-selected="false">Preguntas</a>
@@ -187,59 +187,11 @@
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+				<div class="tab-pane fade" id="home" role="tabpanel" name="descripcion" aria-labelledby="home-tab">
 					<p>La movilidad de una computadora de mano ahora se agrega a la potencia de un sistema de juegos hogareño, con nuevos estilos de juego sin precedentes controlados por los dos nuevos controles Joy-Con</p>
 					<p>Nintendo Switch está diseñado para IR a donde quiera que vaya, transformando la consola de casa en un sistema portátil en un abrir y cerrar de ojos; así que obtienes más tiempo para jugar los juegos que amas, como quieras</p>
 					<p>En casa, el sistema descansa en el dock Nintendo Switch, que te permite jugar con tu familia y amigos en un televisor en la comodidad de tu sala de estar; simplemente levantando el Nintendo Switch del dock en cualquier momento, el sistema pasa instantáneamente al modo portátil, y la misma gran experiencia de juego que se disfrutaba en casa ahora viaja contigo</p>
 					
-				</div>
-				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-					<div class="table-responsive">
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>
-										<h5>Ancho</h5>
-									</td>
-									<td>
-										<h5>350mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Altura</h5>
-									</td>
-									<td>
-										<h5>95mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Profunidad</h5>
-									</td>
-									<td>
-										<h5>200mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Peso</h5>
-									</td>
-									<td>
-										<h5>1.7 Kg</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Contiene </h5>
-									</td>
-									<td>
-										<h5>1pcs</h5>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
 				</div>
 				<!--<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 					<div class="row">
@@ -325,20 +277,20 @@
 					</div>
 				</div>
 			-->
-				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab" onload="getProductoComentarios()">
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="row total_rate">
 								<div class="col-6">
 									<div class="box_total">
-										<h5>Calificación</h5>
-										<h4>4.0</h4>
-										<h6>(03 Reviews)</h6>
+										<h5>Calificación:</h5>
+										<h4 name="calificacionProducto">4.0</h4>
+									<H6>(<h6 name="cantidadReviews">03</h6>Reviews)</H6>
 									</div>
 								</div>
 								<div class="col-6">
 									<div class="rating_list">
-										<h3>Basada en 3 Reviews</h3>
+										<h3>Basada en <h3 name="cantidadReviews">3</h3> Reviews</h3>
 										<ul class="list">
 											<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
 													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
@@ -411,14 +363,20 @@
 							<div class="review_box">
 								<h4>Añade una Review</h4>
 								<p>Tu califiación:</p>
-								<ul class="list">
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-								</ul>
-								<p>-</p>
+								<form id="estrellas">
+								<p class="clasificacion">
+									<input id="radio1" type="radio" name="estrellas" value="5"><!--
+									--><label id="estrellas" for="radio1">★</label><!--
+									--><input id="radio2" type="radio" name="estrellas" value="4"><!--
+									--><label id="estrellas" for="radio2">★</label><!--
+									--><input id="radio3" type="radio" name="estrellas" value="3"><!--
+									--><label id="estrellas" for="radio3">★</label><!--
+									--><input id="radio4" type="radio" name="estrellas" value="2"><!--
+									--><label id="estrellas" for="radio4">★</label><!--
+									--><input id="radio5" type="radio" name="estrellas" value="1"><!--
+									--><label id="estrellas" for="radio5">★</label>
+								  </p>
+								  </form>
 								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
 									<div class="col-md-12">
 										<div class="form-group">
@@ -672,6 +630,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/main.js"></script>
+
+	<script src="js/infoProducto.js"></script>
 
 </body>
 

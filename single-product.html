@@ -152,7 +152,7 @@
 							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
 							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp &amp & sst > 0 ) result.value--;return false;"
 							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
 						<div class="card_area d-flex align-items-center">
@@ -291,16 +291,20 @@
 								<div class="col-6">
 									<div class="rating_list">
 										<h3>Basada en <h3 name="cantidadReviews">3</h3> Reviews</h3>
-										<ul class="list">
-											<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Star <i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i> 00</a></li>
-											<li><a href="#">1 Star <i class="fa fa-star"></i> 00</a></li>
-										</ul>
+										<form id="estrellas">
+											<p class="clasificacion">
+											  <input id="radio1" type="radio" name="estrellas" value="5"><!--
+											  --><label id="estrellas" for="radio1">★</label><!--
+											  --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+											  --><label id="estrellas" for="radio2">★</label><!--
+											  --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+											  --><label id="estrellas" for="radio3">★</label><!--
+											  --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+											  --><label id="estrellas" for="radio4">★</label><!--
+											  --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+											  --><label id="estrellas" for="radio5">★</label>
+											</p>
+										  </form>
 									</div>
 								</div>
 							</div>

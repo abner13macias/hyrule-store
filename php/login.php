@@ -31,16 +31,22 @@
 
         if($row = mysqli_fetch_array($result)){
             $hashPass = $row["contrasenia"];
-            if(password_verify ($pass , $hashPass )){
+            if(password_verify ($pass, $hashPass)){
                 $_SESSION["Id_Usuario"] = $row["Id_Usuario"];
                 header('Location: ../index.html?Id_Usuario='.$_SESSION["Id_Usuario"]);
             }
             else{
-                header('Location: ../register.html');
+                echo "<SCRIPT>
+                alert('Datos incorrectos')
+                window.location.replace('../login.html');
+                </SCRIPT>";
             }
         }
         else{
-            header('Location: ../register.html');
+            echo "<SCRIPT>
+            alert('No existe la cuenta, por favor registrese')
+            window.location.replace('../register.html');
+        </SCRIPT>";
         }
 
     }

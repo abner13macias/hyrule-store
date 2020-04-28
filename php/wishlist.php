@@ -1,9 +1,8 @@
 <?php
     session_start();
-    require_once 'config.php';
-    require_once 'login.php';    
-    $productObj = json_decode($_POST['product']);
-    $query = "INSERT INTO wishlist (IdUsuario,IdArticulo) VALUES ($_SESSION["Id_Usuario"],$productObj->IdProduct)";
+    require_once 'config.php';    
+    $productObj = json_decode($_POST['article']);
+    $query = "INSERT INTO wishlist (IdUsuario,IdArticulo) VALUES ($productObj->idUser,$productObj->idArticle)";
     $result = mysqli_query($db,$query);
 
     if (!isset($response)) {
@@ -11,11 +10,11 @@
     }
 
     if($result) {
-        $response->message = 'Se ha agregado exitosamente al carrito.';
+        $response->message = 'Se ha agregado exitosamente a la lista de deseos.';
         echo json_encode($response);
         mysqli_close($db);
     } else {
-        $response->message = 'Error al cargar la tabla productos.';
+        $response->message = 'Error al llenar la lista de deseos.';
         echo json_encode($response);
         mysqli_close($db);  
     }

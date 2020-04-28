@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 
-<body id="category">
+<body id="category" onload="getProductData()">
 
 	<!-- Start Header Area -->
 	<header class="header_area sticky-header">
@@ -94,7 +94,7 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1 style="color: black">Categoria de productos</h1>
+					<h1 style="color: black">Productos</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html" style="color: black">Inicio<span class="lnr lnr-arrow-right"></span></a>
 						<a href="#" style="color: black">Categorias<span class="lnr lnr-arrow-right"></span></a>
@@ -242,223 +242,13 @@
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
-					<div class="row">
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-                                    <a href="single-product.html">
-								<img class="img-fluid" src="img/product/p1.jpg" alt="">
-                                </a>
-								<div class="product-details">
-                                    <a href="single-product.html">
-									<h6>Nintendo Switch 1.1</h6>
-                                        </a>
-								<div class="price">
-									<h6>$6,999.00</h6>
-									<h6 class="l-through">$8,999.00</h6> <!--N Switch -->
-									</div>
-									<div class="prd-bottom">
+					<div class="row" id="productos">
+						
+					<!--
+						Aquí se cargan los productos
+					-->
 
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">Carrito</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">Comparar</p>
-										</a>
-										<a href="single-product.html" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">Ver más</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-                                    <a href="single-product.html">
-								<img class="img-fluid" src="img/product/p2.jpg" alt="">
-                                </a>
-								<div class="product-details">
-                                    <a href="single-product.html">
-									<h6>PlayStation 4 1TB </h6>
-                                    </a>
-								<div class="price">
-									<h6>$8,500.00</h6>
-									<h6 class="l-through">$10,000.00</h6>
-									</div>
-									<div class="prd-bottom">
 
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">Carrito</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">Comparar</p>
-										</a>
-										<a href="single-product.html" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">Ver más</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-                                    <a href="single-product.html">
-								<img class="img-fluid" src="img/product/p3.jpg" alt="">
-                                </a>
-								<div class="product-details">
-                                    <a href="single-product.html">
-									<h6>XBOX SERIES X 1TB</h6>
-                                    </a>
-								<div class="price">
-									<h6>$7,999.00</h6>
-									<h6 class="l-through">$8,500.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">Carrito</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">Comparar</p>
-										</a>
-										<a href="single-product.html" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">Ver más</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-                                    <a href="single-product.html">
-								<img class="img-fluid" src="img/product/p4.jpg" alt="">
-                                </a>
-								<div class="product-details">
-                                    <a href="single-product.html">
-									<h6>Control DualShock 4</h6>
-                                    </a>
-								        <div class="price">
-									       <h6>$1,199.00</h6>
-									       <h6 class="l-through">$1,799.00</h6>
-									   </div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">Carrito</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">Comparar</p>
-										</a>
-										<a href="single-product.html" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">Ver más</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-                                    <a href="single-product.html">
-								<img class="img-fluid" src="img/product/p5.jpg" alt="">
-                                </a>
-								<div class="product-details">
-                                    <a href="single-product.html">
-									<h6>The Legend of Zelda: Breath of the Wild (N. Switch)</h6><!--ZELDA -->
-                                    </a>
-									<div class="price">
-										<h6>$1,399.00</h6>
-										<h6 class="l-through">$1,599.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">Carrito</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">Comparar</p>
-										</a>
-										<a href="single-product.html" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">Ver más</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-                                    <a href="single-product.html">
-								<img class="img-fluid" src="img/product/p6.jpg" alt="">
-                                </a>
-								<div class="product-details">
-                                    <a href="single-product.html">
-									<h6>Base Cargadora de JoyCons Switch</h6>
-                                    </a>
-								        <div class="price">
-									       <h6>$1,000.00</h6>
-									       <h6 class="l-through">$1,500.00</h6>
-									   </div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">Carrito</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">Comparar</p>
-										</a>
-										<a href="single-product.html" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">Ver más</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</section>
 				<!-- End Best Seller -->
@@ -653,6 +443,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/productos.js"></script>
 </body>
 
 </html>

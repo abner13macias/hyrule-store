@@ -10,11 +10,11 @@ function getProductData() {
         let singleProduct = document.createElement('div');
         singleProduct.className = 'single-product';        
         singleProduct.innerHTML = `
-                <a href="single-product.html?product=${product.IdArticulo}">
+                <a href="single-product.html?IdArticulo=${product.IdArticulo}">
                 <img class="img-fluid" src="${product.Direccion}" alt="">
                 </a>
                 <div class="product-details">
-                    <a href="single-product.html?IdProducto=${product.IdArticulo}">
+                    <a href="single-product.html?IdArticulo=${product.IdArticulo}">
                     <h6>${product.Nombre}</h6>
                         </a>
                 <div class="price">

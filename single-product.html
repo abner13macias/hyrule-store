@@ -40,7 +40,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+					<a class="navbar-brand logo_h" href="main.html"><img src="img/logo.png" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -50,7 +50,7 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
+							<li class="nav-item active"><a class="nav-link" href="main.html">Inicio</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Comprar</a>
@@ -75,7 +75,7 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Páginas</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">Acceder</a></li>
+									<li class="nav-item"><a class="nav-link" href="#" onclick="logOut(); return false;">Cerrar Sesión</a></li>
 									<li class="nav-item"><a class="nav-link" href="tracking.html">Rastreo</a></li>
 								</ul>
 							</li>
@@ -110,7 +110,7 @@
 				<div class="col-first">
 					<h1></h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Inicio<span class="lnr lnr-arrow-right"></span></a>
+						<a href="main.html">Inicio<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">Nintendo<span class="lnr lnr-arrow-right"></span></a>
 						<a href="single-product.html">Nintendo Switch</a>
 					</nav>
@@ -121,8 +121,53 @@
 	<!-- End Banner Area -->
 
 	<!--================Single Product Area =================-->
+<<<<<<< HEAD
 	<body onload="getProductoInfo()"><div class="product_image_area" id="todo">
 		<!----------aqui va la info del producto----------------->
+=======
+	<div class="product_image_area">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-6">
+					<div class="s_Product_carousel">
+						<div class="single-prd-item">
+							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+						</div>
+						<div class="single-prd-item">
+							<img class="img-fluid" src="img/category/s-p2.jpg" alt="">
+						</div>
+						<div class="single-prd-item">
+							<img class="img-fluid" src="img/category/s-p3.jpg" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<h3>Nintendo Consola Switch Neon 32GB Version 1.1 - Standard Edition</h3>
+						<h2>$6,850.00</h2>
+						<ul class="list">
+							<li><a class="active" href="#"><span>Categoria</span> : Nintendo</a></li>
+							<li><a href="#"><span>Disponibilidad</span> : En Stock</a></li>
+						</ul>
+						<p>Presentamos Nintendo Switch, el nuevo sistema de videojuego para el hogar de Nintendo; además de proporcionar emociones únicas y multijugador en casa, el sistema Nintendo Switch se puede llevar mientras viaja para que los jugadores puedan disfrutar de una experiencia de consola completa en cualquier momento y en cualquier lugar</p>
+						<div class="product_count">
+							<label for="qty">Cantidad:</label>
+							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp &amp & sst > 0 ) result.value--;return false;"
+							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+						</div>
+						<div class="card_area d-flex align-items-center">
+							<a class="primary-btn" href="cart.html">Añadir al carrito</a>
+							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+>>>>>>> 0a127b07bd7e6c21c34ed81338146521f3632e1a
 	</div>
 	</body>
 
@@ -544,6 +589,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/login.js"></script>
 
 	<script src="js/infoProducto.js"></script>
 

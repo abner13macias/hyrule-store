@@ -1,7 +1,6 @@
 function getProductData() {
     $.get('php/productos.php', response => {
       let resp = JSON.parse(response);
-      console.log(resp.data);
 
       for (const product of resp.data) {
         /* Create category table row for each category on the response */
@@ -27,11 +26,11 @@ function getProductData() {
                             <span class="ti-bag"></span>
                             <p class="hover-text">Carrito</p>
                         </a>
-                        <a href class="social-info" onclick="addWishList(${product.IdArticulo})">
+                        <a href="#" class="social-info" onclick="addWishList(${product.IdArticulo}); return false;">
                             <span class="lnr lnr-heart"></span>
                             <p class="hover-text">Wishlist</p>
                         </a>
-                        <a href="single-product.html?IdProduct=${product.IdArticulo}" class="social-info">
+                        <a href="single-product.html?IdArticulo=${product.IdArticulo}" class="social-info">
                             <span class="lnr lnr-move"></span>
                             <p class="hover-text">Ver más</p>
                         </a>
@@ -44,16 +43,42 @@ function getProductData() {
     });
   }
 
-  function addWishList(idProducto){
-    const IdProduct = idProducto;
-    const product = JSON.stringify({
-        IdProduct
+function addWishList(idArticulo){
+    const idArticle = idArticulo;
+    const idUser = localStorage.getItem("Id_Usuario");
+    
+    const article = JSON.stringify({
+        idArticle,
+        idUser
     });
-    $.post('php/wishlist.php', { product }, response => {
+    $.post('php/wishlist.php', { article }, response => {
+        let resp = JSON.parse(response);
+        alert(resp.message);
+    });
+}
+
+  function addCart(idArticulo){
+    const idArticle = idArticulo;
+    const idUser = localStorage.getItem("Id_Usuario");
+
+    const article = JSON.stringify({
+        idArticle,
+        idUser
+    });
+    $.post('php/carrito.php', { article }, response => {
         let resp = JSON.parse(response);
         alert(resp.message);
     });
   }
 
-  function addCart(){
+  function getQueryVariable(variableName) {
+    const query = window.location.search.substring(1);
+    const vars = query.split('&');
+    for (const i in vars) {
+      let pair = vars[i].split('=');
+      if (pair[0] === variableName) {
+        return pair[1];
+      }
+    }
+    return false;
   }

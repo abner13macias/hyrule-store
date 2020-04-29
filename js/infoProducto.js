@@ -16,7 +16,7 @@ function getProductoInfo() {
         singleProduct.className = 'row s_product_inner';
         singleProduct.innerHTML = `
         <div class="col-lg-6">
-        <div class="s_Product_carousel">
+        <div class="s_Product_carousel" id="imagen">
                     <div class="single-prd-item">
                         <img class="img-fluid" name= "imgen1"  src="${resp.data.Direccion}" alt="">
                     </div>
@@ -56,7 +56,7 @@ function getProductoInfo() {
         singleProduct.className = 'row s_product_inner';
         singleProduct.innerHTML = `
         <div class="col-lg-6">
-        <div class="s_Product_carousel">
+        <div class="s_Product_carousel" id="imagen">
                     <div class="single-prd-item">
                         <img class="img-fluid" name= "imgen1"  src="${resp.data.Direccion}" alt="">
                     </div>
@@ -107,6 +107,24 @@ function getProductoInfo() {
  function cargacalif(){
 
 
+
         }
+function cargamagenes(){
+    $.post('php/cargarImagenesProducto.php', { productoId }, response => 
+    {
+        let resp = JSON.parse(response);
+        console.log(resp.data);
+  
+        for (const imagen of resp.data) {
+          /* Create category table row for each category on the response */
+          let productImgDiv = document.createElement('div');
+          productImgDiv.className = 'single-prd-item'; 
+          productImgDiv.innerHTML = `
+          <img class="img-fluid" name= "imgen1"  src="${imagen.Direccion}" alt="">
+              `;
     
+          document.getElementById('imagen').appendChild(productDiv);
+        }
+      });
+}    
 

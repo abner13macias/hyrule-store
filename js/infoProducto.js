@@ -1,7 +1,7 @@
 var calif;
 function getProductoInfo() {
 
-  // const productoId = getQueryVariable('IdProducto');
+  const productoId = getQueryVariable('IdArticulo');
 
    const productoId = "1000";
   
@@ -108,6 +108,8 @@ function getProductoInfo() {
 
         }
 function cargamagenes(){
+    //const productoId = getQueryVariable('IdArticulo');
+    const productoId = "1000";
     $.post('php/cargarImagenesProducto.php', { productoId }, response => 
     {
         let resp = JSON.parse(response);
@@ -125,4 +127,46 @@ function cargamagenes(){
         }
       });
 }    
+function getProductoComentarios(){
+
+//const productoId = getQueryVariable('IdArticulo');
+const productoId = "1000";
+$.post('php/cargarComentariosProducto.php', { productoId }, response => 
+{
+    let resp = JSON.parse(response);
+    console.log(resp.data);
+
+    for (const comentario of resp.data) {
+      /* Create category table row for each category on the response */
+      let productcomDiv = document.createElement('div');
+      productcomDiv.className = 'review_item'; 
+      productcomDiv.innerHTML = `<div class="media">
+										<div class="d-flex">
+											<img src="img/product/review-1.png" alt="">
+										</div>
+										<div class="media-body">
+											<h4>Blake Ruiz</h4>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+									</div>
+									<p>Voy a escribir una reseña prematura ya que solamente venía la consola como tal, cuando compré algún juego les escribo la reseña completa:
+										En primera, ya tenía ganas de comprar el Switch, me habían dicho que iba a salir una versión de revisión y me esperé a la dicha.
+										En segunda, llego todo súper bien.
+										Al momento de abrir la caja, traia unos golpes pero, no por eso mi calificación será menor, puede ser que pase y más por que el envío es de Amazon.
+										El producto como tal estaba intacto, nuevo, todo en perfecta condición y la instalación fue en menos de 25 mins.
+										Había dudado de comprarla por el tema de que los Joy Coins decian se barren, la resolución, bla,bla,bla.
+										En mi punto de vista, no hagan caso, si son fans de Nintendo o quieren descubrir una consola nuevas definitivamente será esta.
+										Tenía ganas de un Xbox One, pero los precios son altos, y con esta consola estoy más que satisfecho.</p>
+								
+          `;
+
+      document.getElementById('comentarios').appendChild(productDiv);
+    }
+  });
+}    
+}
 

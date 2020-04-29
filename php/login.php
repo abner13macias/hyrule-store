@@ -33,12 +33,12 @@
             $hashPass = $row["contrasenia"];
             if(password_verify ($pass, $hashPass)){
                 $_SESSION["Id_Usuario"] = $row["Id_Usuario"];
-                header('Location: ../index.html?Id_Usuario='.$_SESSION["Id_Usuario"]);
+                header('Location: ../main.html?Id_Usuario='.$_SESSION["Id_Usuario"]);
             }
             else{
                 echo "<SCRIPT>
                 alert('Datos incorrectos')
-                window.location.replace('../login.html');
+                window.location.replace('../index.html');
                 </SCRIPT>";
             }
         }

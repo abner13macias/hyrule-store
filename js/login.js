@@ -36,3 +36,8 @@ function getQueryVariable(variableName) {
     }
     return false;
   }
+
+function logOut(){
+    localStorage.removeItem("Id_Usuario");
+    window.location = "index.html"
+}

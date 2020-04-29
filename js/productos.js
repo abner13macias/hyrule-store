@@ -26,11 +26,11 @@ function getProductData() {
                             <span class="ti-bag"></span>
                             <p class="hover-text">Carrito</p>
                         </a>
-                        <button class="social-info" onclick="addWishList(${product.IdArticulo})">
+                        <a href="#" class="social-info" onclick="addWishList(${product.IdArticulo}); return false;">
                             <span class="lnr lnr-heart"></span>
                             <p class="hover-text">Wishlist</p>
-                        </button>
-                        <a href="single-product.html?IdProduct=${product.IdArticulo}" class="social-info">
+                        </a>
+                        <a href="single-product.html?IdArticulo=${product.IdArticulo}" class="social-info">
                             <span class="lnr lnr-move"></span>
                             <p class="hover-text">Ver más</p>
                         </a>

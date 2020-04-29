@@ -121,55 +121,15 @@
 	<!-- End Banner Area -->
 
 	<!--================Single Product Area =================-->
-	<body onload="getProductoInfo()"><div class="product_image_area">
-		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="s_Product_carousel">
-						<div class="single-prd-item">
-							<img class="img-fluid" name= "imgen1"  alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" name= "imgen2"  alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" name= "imgen3"  alt="">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<h3 name="nombre">Nintendo Consola Switch Neon 32GB Version 1.1 - Standard Edition</h3>
-						<h2 name="precio">$6,850.00</h2>
-						<ul class="list">
-							<li><span>Categoria:</span><a class="active" name="categoria"></a></li>
-							<li><a class="active" name="genero"></a></li>
-							<li><a href="#"name="extra"></a></li><!--consola/conectividad-->
-						</ul>
-						<p name= "descripcion">Presentamos Nintendo Switch, el nuevo sistema de videojuego para el hogar de Nintendo; además de proporcionar emociones únicas y multijugador en casa, el sistema Nintendo Switch se puede llevar mientras viaja para que los jugadores puedan disfrutar de una experiencia de consola completa en cualquier momento y en cualquier lugar</p>
-						<div class="product_count">
-							<label for="qty">Cantidad:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp &amp & sst > 0 ) result.value--;return false;"
-							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-						</div>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="cart.html">Añadir al carrito</a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<body onload="getProductoInfo()"><div class="product_image_area" id="todo">
+		<!----------aqui va la info del producto----------------->
 	</div>
 	</body>
+
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
-	<section class="product_description_area" onload="getProductoComentarios()">
+	<section class="product_description_area">
 		<div class="container">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<!--	<li class="nav-item">
@@ -187,12 +147,7 @@
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade" id="home" role="tabpanel" name="descripcion" aria-labelledby="home-tab">
-					<p>La movilidad de una computadora de mano ahora se agrega a la potencia de un sistema de juegos hogareño, con nuevos estilos de juego sin precedentes controlados por los dos nuevos controles Joy-Con</p>
-					<p>Nintendo Switch está diseñado para IR a donde quiera que vaya, transformando la consola de casa en un sistema portátil en un abrir y cerrar de ojos; así que obtienes más tiempo para jugar los juegos que amas, como quieras</p>
-					<p>En casa, el sistema descansa en el dock Nintendo Switch, que te permite jugar con tu familia y amigos en un televisor en la comodidad de tu sala de estar; simplemente levantando el Nintendo Switch del dock en cualquier momento, el sistema pasa instantáneamente al modo portátil, y la misma gran experiencia de juego que se disfrutaba en casa ahora viaja contigo</p>
-					
-				</div>
+				
 				<!--<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 					<div class="row">
 						<div class="col-lg-6">
@@ -277,7 +232,7 @@
 					</div>
 				</div>
 			-->
-				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab" onload="getProductoComentarios()">
+				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab" >
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="row total_rate">
@@ -285,30 +240,14 @@
 									<div class="box_total">
 										<h5>Calificación:</h5>
 										<h4 name="calificacionProducto">4.0</h4>
-									<H6>(<h6 name="cantidadReviews">03</h6>Reviews)</H6>
+									<H6>(<a name="cantidadReviews">03 </a>Reviews)</H6>
 									</div>
 								</div>
 								<div class="col-6">
-									<div class="rating_list">
-										<h3>Basada en <h3 name="cantidadReviews">3</h3> Reviews</h3>
-										<form id="estrellas">
-											<p class="clasificacion">
-											  <input id="radio1" type="radio" name="estrellas" value="5"><!--
-											  --><label id="estrellas" for="radio1">★</label><!--
-											  --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-											  --><label id="estrellas" for="radio2">★</label><!--
-											  --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-											  --><label id="estrellas" for="radio3">★</label><!--
-											  --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-											  --><label id="estrellas" for="radio4">★</label><!--
-											  --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-											  --><label id="estrellas" for="radio5">★</label>
-											</p>
-										  </form>
-									</div>
+									
 								</div>
 							</div>
-							<div class="review_list">
+							<div class="review_list"  onload="getProductoComentarios()">
 								<div class="review_item">
 									<div class="media">
 										<div class="d-flex">
@@ -332,35 +271,6 @@
 										En mi punto de vista, no hagan caso, si son fans de Nintendo o quieren descubrir una consola nuevas definitivamente será esta.
 										Tenía ganas de un Xbox One, pero los precios son altos, y con esta consola estoy más que satisfecho.</p>
 								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>La consola muy bien y más barata que la versión anterior, mi hermano tiene un Switch y ahora yo quería la versión 1.1. Todo perfecto, de hecho llego muy rápido pero el detalle fue que la caja venía dañada y muy sucia: polveada y con manchas como de aceite. Para mi la caja importa por que las colecciono. Además la caja no venía sellada, se nota que los manuales, joycons y la pantalla habían sido removidos por alguien. Hace dudar que sea 100% nueva la consola. Al ser un comprador recurrente de Amazon incluso Prime, esto me ha decepcionado un poco.</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Para mi el ori también es un juegazo, al final lo más importante es el nivel artístico, la atmósfera y la música que lo envuelve. Crear obras de arte es muy dificil. Estoy contigo, el fallout 4 por ejemplo tiene unos decorados brutales pero el transfondo a medida que vas avanzando, a mi gusta la historia pierde carisma y empieza a verse vacío. El último tomb raider me lo compré de oferta steam, gráficos brutales, parece una peli, pero a la mitad del juego la historia me pareció muy típica y las mazmorras más de lo mismo. Lo dejé a medias. Los gráficos no lo son todo, para mi la switch trae una innovación muy especial, otro formato, hace 10 años que no compro una consola ya que el pc me parecía sustituto total, pero a la hora de la verdad, para jugar en familia y jugar juegos tiernos, no hay mejor que nintedo. Espero que este zelda no defraude!.</p>
-								</div>
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -368,18 +278,18 @@
 								<h4>Añade una Review</h4>
 								<p>Tu califiación:</p>
 								<form id="estrellas">
-								<p class="clasificacion">
-									<input id="radio1" type="radio" name="estrellas" value="5"><!--
-									--><label id="estrellas" for="radio1">★</label><!--
-									--><input id="radio2" type="radio" name="estrellas" value="4"><!--
-									--><label id="estrellas" for="radio2">★</label><!--
-									--><input id="radio3" type="radio" name="estrellas" value="3"><!--
-									--><label id="estrellas" for="radio3">★</label><!--
-									--><input id="radio4" type="radio" name="estrellas" value="2"><!--
-									--><label id="estrellas" for="radio4">★</label><!--
-									--><input id="radio5" type="radio" name="estrellas" value="1"><!--
-									--><label id="estrellas" for="radio5">★</label>
-								  </p>
+									<p class="clasificacion">
+									  <input id="radio1" type="radio" name="estrellas" value="5"><!--
+									  --><label id="estrellas" for="radio1">★</label><!--
+									  --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+									  --><label id="estrellas" for="radio2">★</label><!--
+									  --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+									  --><label id="estrellas" for="radio3">★</label><!--
+									  --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+									  --><label id="estrellas" for="radio4">★</label><!--
+									  --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+									  --><label id="estrellas" for="radio5">★</label>
+									</p>
 								  </form>
 								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
 									<div class="col-md-12">

@@ -16,11 +16,9 @@ function getProductoInfo() {
         singleProduct.className = 'row s_product_inner';
         singleProduct.innerHTML = `
         <div class="col-lg-6">
-        <div class="s_Product_carousel" id="imagen">
-                    <div class="single-prd-item">
-                        <img class="img-fluid" name= "imgen1"  src="${resp.data.Direccion}" alt="">
-                    </div>
-                </div>
+        <div class="s_Product_carousel" id="imagen" onload="cargamagenes()">
+            <!----- aqui van las imagenes------->        
+         </div>
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">

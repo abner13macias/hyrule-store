@@ -1,4 +1,3 @@
-
 function getProductoInfo() {
 
     const productoId = getQueryVariable('IdArticulo');
@@ -16,7 +15,7 @@ function getProductoInfo() {
           singleProduct.className = 'row s_product_inner';
           singleProduct.innerHTML = `
           <div class="col-lg-6">
-          <div onload="cargaImagenes()" class="s_Product_carousel" id="imagen" >
+          <div class="s_Product_carousel" id="imagen" >
               <!----- aqui van las imagenes------->        
            </div>
               </div>
@@ -54,7 +53,7 @@ function getProductoInfo() {
           singleProduct.className = 'row s_product_inner';
           singleProduct.innerHTML = `
           <div class="col-lg-6">
-          <div onload="cargaImagenes()" class="s_Product_carousel" id="imagen" >
+          <div class="s_Product_carousel" id="imagen" >
               
           <!----- aqui van las imagenes------->        
                 
@@ -103,6 +102,7 @@ function getProductoInfo() {
         alert(resp.message);
               });
             }
+
  function cargaImagenes(){
     const productoId = getQueryVariable('IdArticulo');
                 //const productoId = "1000";

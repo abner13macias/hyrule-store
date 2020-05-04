@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body onload="cargarCarrito()">
 
     <!-- Start Header Area -->
 	<header class="header_area sticky-header">
@@ -129,172 +129,10 @@
                                 <th scope="col">Producto</th>
                                 <th scope="col">Precio</th>
                                 <th scope="col">Cantidad</th>
-                                <th scope="col">Total</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/cart.jpg" height="100" width="150" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>DualShock 4</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$1,199.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$1,1990.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/cart1.jpg" height="100" width="150" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>PlayStation 4 pro 1TB</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$8,500</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$8,500.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/cart2.jpg" height="100" width="150" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>The Last Of Us 2</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$999.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$999.00</h5>
-                                </td>
-                            </tr>
-                            <tr class="bottom_button">
-                                <td>
-                                    <a class="gray_btn" href="#">Actualizar carrito</a>
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="cupon_text d-flex align-items-center">
-                                        <input type="text" placeholder="Coupon Code">
-                                        <a class="primary-btn" href="#">Apply</a>
-                                        <a class="gray_btn" href="#">Close Coupon</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <h5>Subtotal</h5>
-                                </td>
-                                <td>
-                                    <h5>$10,698</h5>
-                                </td>
-                            </tr>
-                            <tr class="shipping_area">
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <h5>Envido</h5>
-                                </td>
-                                <td>
-                                    <div class="shipping_box">
-                                        <ul class="list">
-                                            <li><a href="#">Envio FULL $250.00</a></li>
-                                            <li><a href="#">Envio gratis</a></li>
-                                            <li><a href="#">Envio a sucursal $120.00</a></li>
-                                            <li class="active"><a href="#">: $2.00</a></li>
-                                        </ul>
-                                        <h6>Calcular envio <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
-                                        <select class="shipping_select">
-                                            <option value="1">Seleccionar Estado</option>
-                                            <option value="2">Seleccionar Estado</option>
-                                            <option value="4">Seleccionar Estado</option>
-                                        </select>
-                                        <input type="text" placeholder="Codigo Postal">
-                                        <a class="gray_btn" href="#">Actualizar Direccion</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="out_button_area">
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="#">Continuar comprando</a>
-                                        <a class="primary-btn" href="#">Checkout</a>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tbody id="carrito">
+                            <!-- Se carga carrito -->
                         </tbody>
                     </table>
                 </div>
@@ -379,7 +217,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
-	<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 
 </html>

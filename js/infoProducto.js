@@ -1,4 +1,4 @@
-
+var califprod;
 function getProductoInfo() {
 
     const productoId = getQueryVariable('IdArticulo');
@@ -9,7 +9,7 @@ function getProductoInfo() {
           
           let resp = JSON.parse(response);
           calif=resp.data.Calificacion;
-          if(!isNaN(resp.data.Nombre)){
+          if(!isNaN(resp.data.Genero)){
           let productDiv = document.createElement('div');
           productDiv.className = "container";
           let singleProduct = document.createElement('div');
@@ -55,7 +55,7 @@ function getProductoInfo() {
           singleProduct.innerHTML = `
           <div class="col-lg-6">
           <div class="s_Product_carousel" id="imagen">
-               <div class="s_Product_carousel" id="imagen" onload="cargamagenes()">
+               <div class="s_Product_carousel" id="imagen" onload="cargamIagenes()">
           <!----- aqui van las imagenes------->        
                 </div>
                   </div>
@@ -85,9 +85,10 @@ function getProductoInfo() {
                   </div>`;
                   productDiv.appendChild(singleProduct);
                   document.getElementById('todo').appendChild(productDiv);
-  
+                
   
               }
+              califprod=resp.data.Calificacion;
           
           }
           )}
@@ -101,7 +102,7 @@ function getProductoInfo() {
                   alert(resp.message);
               });
             }
-  function cargamagenes(){
+  function cargaImagenes(){
       const productoId = getQueryVariable('IdArticulo');
       //const productoId = "1000";
       $.post('php/cargarImagenesProducto.php', { productoId }, response => 
@@ -120,12 +121,28 @@ function getProductoInfo() {
             document.getElementById('imagen').appendChild(productDiv);
           }
         });
-  }    
-  function getProductoComentarios(){
+  } 
   
+  function getCalif(){
+    const productoId = getQueryVariable('IdArticulo');
+    $.post('php/obtieneNumeroDeReviews.php', { productoId }, response => 
+    {
+        let resp = JSON.parse(response);
+    let productcalDiv = document.createElement('div');
+    productcalDiv.className = 'box_total'; 
+    productcalDiv.innerHTML = `<h5>Calificación:</h5>
+        <h4 name="calificacionProducto">${califprod}</h4>
+        <H6>(<a name="cantidadReviews">${resp.data.Cantidad}</a>Reviews)</H6>`;
+
+    document.getElementById('califprod').appendChild(productDiv); 
+
+  });
+}
+
+  function getProductoComentarios(){
   const productoId = getQueryVariable('IdArticulo');
    //const productoId = "1000";
-  $.post('php/cargarComentariosProducto.php', { productoId }, response => //FALTA CREEAR EL PHP
+  $.post('php/cargarComentariosProducto.php', { productoId }, response => 
   {
       let resp = JSON.parse(response);
       console.log(resp.data);
@@ -139,8 +156,8 @@ function getProductoInfo() {
                                               <img src="img/product/review-1.png" alt="">
                                           </div>
                                           <div class="media-body">
-                                              <h4>${comentario.Nombre}</h4>
-                                              <div id="califEstrella" onload="rellenarEstrellas(${comentario.Calificacion})">
+                                              <h4>${comentario.Nombre} ${comentario.ApellidoPaterno}</h4>
+                                              <div id="califEstrella" onload="rellenarEstrellas(${comentario.Calif})">
                                               <!-----ESTRELLAS------>
                                               </div>
                                           </div>

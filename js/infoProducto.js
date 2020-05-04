@@ -55,7 +55,7 @@ function getProductoInfo() {
           singleProduct.innerHTML = `
           <div class="col-lg-6">
           <div class="s_Product_carousel" id="imagen">
-               <div class="s_Product_carousel" id="imagen" onload="cargamIagenes()">
+               <div class="s_Product_carousel" id="imagen" onload="cargaImagenes()">
           <!----- aqui van las imagenes------->        
                 </div>
                   </div>

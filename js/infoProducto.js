@@ -1,4 +1,4 @@
-var califprod;
+
 function getProductoInfo() {
 
     const productoId = getQueryVariable('IdArticulo');
@@ -9,14 +9,14 @@ function getProductoInfo() {
           
           let resp = JSON.parse(response);
           calif=resp.data.Calificacion;
-          if(!isNaN(resp.data.Genero)){
+          if(isNaN(resp.data.Genero)){
           let productDiv = document.createElement('div');
           productDiv.className = "container";
           let singleProduct = document.createElement('div');
           singleProduct.className = 'row s_product_inner';
           singleProduct.innerHTML = `
           <div class="col-lg-6">
-          <div class="s_Product_carousel" id="imagen" onload="cargaImagenes()">
+          <div onload="cargaImagenes()" class="s_Product_carousel" id="imagen" >
               <!----- aqui van las imagenes------->        
            </div>
               </div>
@@ -54,10 +54,10 @@ function getProductoInfo() {
           singleProduct.className = 'row s_product_inner';
           singleProduct.innerHTML = `
           <div class="col-lg-6">
-          <div class="s_Product_carousel" id="imagen">
-               <div class="s_Product_carousel" id="imagen" onload="cargaImagenes()">
+          <div onload="cargaImagenes()" class="s_Product_carousel" id="imagen" >
+              
           <!----- aqui van las imagenes------->        
-                </div>
+                
                   </div>
               </div>
               <div class="col-lg-5 offset-lg-1">
@@ -92,46 +92,47 @@ function getProductoInfo() {
           
           }
           )}
-          function addWishList(idProducto){
-              const IdProducto = idProducto;
-              const producto = JSON.stringify({
-                  IdProducto
+
+          
+ function addWishList(idProducto){
+     const IdProducto = idProducto;
+     const producto = JSON.stringify({ IdProducto
               });
-              $.post('php/wishlist.php', { producto }, response => {
-                  let resp = JSON.parse(response);
-                  alert(resp.message);
+    $.post('php/wishlist.php', { producto }, response => {
+         let resp = JSON.parse(response);
+        alert(resp.message);
               });
             }
-  function cargaImagenes(){
-      const productoId = getQueryVariable('IdArticulo');
-      //const productoId = "1000";
-      $.post('php/cargarImagenesProducto.php', { productoId }, response => 
-      {
-          let resp = JSON.parse(response);
-          console.log(resp.data);
-    
-          for (const imagen of resp.data) {
-            /* Create category table row for each category on the response */
+ function cargaImagenes(){
+    const productoId = getQueryVariable('IdArticulo');
+                //const productoId = "1000";
+    $.post('php/cargarImagenesProducto.php', { productoId }, response => 
+         {
+         let resp = JSON.parse(response);
+         console.log(resp.data);
+              
+         for (const imagen of resp.data) {
+        // Create category table row for each category on the response 
             let productImgDiv = document.createElement('div');
-            productImgDiv.className = 'single-prd-item'; 
-            productImgDiv.innerHTML = `
-            <img class="img-fluid" name= "imgen1"  src="${imagen.Direccion}" alt="">
-                `;
-      
-            document.getElementById('imagen').appendChild(productDiv);
-          }
-        });
-  } 
+                productImgDiv.className = 'single-prd-item'; 
+                productImgDiv.innerHTML = `
+                      <img class="img-fluid" name= "imgen1"  src="${imagen.Direccion}" alt="">
+                          `;
+                
+                      document.getElementById('imagen').appendChild(productImgDiv);
+                    }
+                  });
+            }
   
   function getCalif(){
     const productoId = getQueryVariable('IdArticulo');
     $.post('php/obtieneNumeroDeReviews.php', { productoId }, response => 
     {
-        let resp = JSON.parse(response);
+    let resp = JSON.parse(response);
     let productcalDiv = document.createElement('div');
     productcalDiv.className = 'box_total'; 
     productcalDiv.innerHTML = `<h5>Calificación:</h5>
-        <h4 name="calificacionProducto">${califprod}</h4>
+        <h4 name="calificacionProducto">${resp.data.Calificacion}</h4>
         <H6>(<a name="cantidadReviews">${resp.data.Cantidad}</a>Reviews)</H6>`;
 
     document.getElementById('califprod').appendChild(productDiv); 

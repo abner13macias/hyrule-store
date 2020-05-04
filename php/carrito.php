@@ -2,19 +2,72 @@
     session_start();
     require_once 'config.php';    
     $productObj = json_decode($_POST['article']);
-    $query = "INSERT INTO wishlist (IdUsuario,IdArticulo) VALUES ($productObj->idUser,$productObj->idArticle)";
-    $result = mysqli_query($db,$query);
 
+    $preQuery = "SELECT c.IdCarrito FROM carrito c WHERE c.IdUsuario = $productObj->idUser AND c.Status='Activo'";
+    $preResult = mysqli_query($db,$preQuery);
+    
     if (!isset($response)) {
         $response = new stdClass();
     }
 
-    if($result) {
-        $response->message = 'Se ha agregado exitosamente a la lista de deseos.';
+    if($preResult){
+        $idCarro = mysqli_fetch_array($preResult);
+        if(count($idCarro) > 0){
+            $idCarrito = $idCarro[0];
+            $query = "SELECT p.Precio FROM producto p WHERE p.IdProducto = $productObj->idArticle UNION ALL SELECT a.Precio FROM accesorio a WHERE a.IdAccesorio = $productObj->idArticle";
+            $result = mysqli_query($db,$query);
+            if($result) {
+                $subtotal = mysqli_fetch_array($result);
+                $finalSub =  $subtotal[0];
+                $query2 = "INSERT INTO carrito (IdCarrito, IdArticulo, IdUsuario,Subtotal) VALUES ($idCarrito,$productObj->idArticle,$productObj->idUser,$finalSub)";
+                $result2 = mysqli_query($db,$query2);
+
+                if($result2){
+                    $response->message = 'Registrado al carrito correctamente mientras es mayor a 0';
+                    echo json_encode($response);
+                    mysqli_close($db);
+                }
+                else{
+                    $response->message = 'Error al insertar carrito mientras es mayor a 0.';
+                    echo json_encode($response);
+                    mysqli_close($db);
+                }
+            } else {
+                $response->message = 'Error al cargar la tabla productos mientras es mayor a 0.';
+                echo json_encode($response);
+                mysqli_close($db);
+            }
+        }
+        else{
+            $query = "SELECT p.Precio FROM producto p WHERE p.IdProducto = $productObj->idArticle UNION ALL SELECT a.Precio FROM accesorio a WHERE a.IdAccesorio = $productObj->idArticle";
+            $result = mysqli_query($db,$query);
+            if($result) {
+                $subtotal = mysqli_fetch_array($result);
+                $finalSub =  $subtotal[0];
+                $query2 = "INSERT INTO carrito (IdUsuario, IdArticulo, Subtotal) VALUES ($productObj->idUser,$productObj->idArticle,$finalSub)";
+                $result2 = mysqli_query($db,$query2);
+
+                if($result2){
+                    $response->message = 'Registrado al carrito correctamente';
+                    echo json_encode($response);
+                    mysqli_close($db);
+                }
+                else{
+                    $response->message = 'Error al insertar carrito.';
+                    echo json_encode($response);
+                    mysqli_close($db);
+                }
+            } else {
+                $response->message = 'Error al cargar la tabla productos.';
+                echo json_encode($response);
+                mysqli_close($db);
+            }
+        }
+
+    }else{
+        $response->message = 'Error al iniciar';
         echo json_encode($response);
         mysqli_close($db);
-    } else {
-        $response->message = 'Error al llenar la lista de deseos.';
-        echo json_encode($response);
-        mysqli_close($db);  
     }
+
+    

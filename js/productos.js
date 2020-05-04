@@ -22,7 +22,7 @@ function getProductData() {
                     </div>
                     <div class="prd-bottom">
 
-                        <a href="" class="social-info">
+                        <a href="#" class="social-info" onclick="addCart(${product.IdArticulo}); return false;">
                             <span class="ti-bag"></span>
                             <p class="hover-text">Carrito</p>
                         </a>

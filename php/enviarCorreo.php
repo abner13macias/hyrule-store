@@ -11,10 +11,11 @@ if (!isset($response)) {
 }
 
 if($result){
-    enviarCorreo($userObj->email,$userObj->PIN);
-    $response->message = 'Se envio el correo exitosamente!';
-    echo json_encode($response);
-    mysqli_close($db);
+        enviarCorreo($userObj->email,$userObj->PIN);
+        $response->message = 'Se envio el correo exitosamente!';
+        echo json_encode($response);
+        mysqli_close($db);
+    
 }
 else{
     $response->message = 'Hubo un error enviando el correo!';
@@ -40,11 +41,11 @@ function enviarCorreo($email,$PIN){
     $mail->SetFrom("ventas@hyrulestoreita.com");
     $mail->Subject = "PIN DODO";
     $mail->Body = "Tu PIN dodo es: ".$PIN;
-    $mail->AddAddress($email);
-    /*if(!$mail->Send()) {
+    $mail->AddAddress("$email");
+    if(!$mail->Send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
     echo "Mensaje enviado correctamente";
-    }*/
+    }
 }
 ?>

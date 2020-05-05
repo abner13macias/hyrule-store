@@ -27,6 +27,7 @@ function setToLocalStorage(){
 
 function sendEmail(){
   const email = getQueryVariable("email");
+  localStorage.setItem("email",email);
   const idUser = getQueryVariable("Id_Usuario");
   const PIN = Math.floor(Math.random() * (9999 - 1000) + 1000);
   const user = JSON.stringify({
@@ -37,6 +38,26 @@ function sendEmail(){
 $.post('php/enviarCorreo.php', { user }, response => {
     let resp = JSON.parse(response);
     console.log(resp.message);
+});
+}
+
+function validarPIN(){
+    const idUser = getQueryVariable("Id_Usuario");
+    const PIN = $('input[name=pin]').val();
+    console.log(idUser);
+    console.log(PIN);
+    const user = JSON.stringify({
+        idUser,
+        PIN
+    });    
+$.post('php/validarPIN.php', { user }, response => {
+    let resp = JSON.parse(response);
+    if(resp.message == 'Se encontró el PIN'){
+        window.location.href = 'main.html?Id_Usuario='+idUser; 
+    }
+    else{
+        alert("PIN Incorrecto");
+    }
 });
 }
 

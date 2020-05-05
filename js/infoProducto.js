@@ -15,7 +15,7 @@ function getProductoInfo() {
           singleProduct.className = 'row s_product_inner';
           singleProduct.innerHTML = `
           <div class="col-lg-6">
-          <div class="s_Product_carousel" id="imagen" >
+          <div class="s_Product_carousel" id="imagen"  >
               <!----- aqui van las imagenes------->        
            </div>
               </div>
@@ -109,7 +109,7 @@ function getProductoInfo() {
     $.post('php/cargarImagenesProducto.php', { productoId }, response => 
          {
          let resp = JSON.parse(response);
-         console.log(resp.data);
+         
               
          for (const imagen of resp.data) {
         // Create category table row for each category on the response 
@@ -126,6 +126,7 @@ function getProductoInfo() {
   
   function getCalif(){
     const productoId = getQueryVariable('IdArticulo');
+    console.log("Calificacion");
     $.post('php/obtieneNumeroDeReviews.php', { productoId }, response => 
     {
     let resp = JSON.parse(response);
@@ -135,7 +136,7 @@ function getProductoInfo() {
         <h4 name="calificacionProducto">${resp.data.Calificacion}</h4>
         <H6>(<a name="cantidadReviews">${resp.data.Cantidad}</a>Reviews)</H6>`;
 
-    document.getElementById('califprod').appendChild(productDiv); 
+    document.getElementById('califprod').appendChild(productcalDiv); 
 
   });
 }
@@ -146,7 +147,7 @@ function getProductoInfo() {
   $.post('php/cargarComentariosProducto.php', { productoId }, response => 
   {
       let resp = JSON.parse(response);
-      console.log(resp.data);
+      console.log("aqui ando");
   
       for (const comentario of resp.data) {
         /* Create category table row for each category on the response */
@@ -158,16 +159,16 @@ function getProductoInfo() {
                                           </div>
                                           <div class="media-body">
                                               <h4>${comentario.Nombre} ${comentario.ApellidoPaterno}</h4>
-                                              <div id="califEstrella" onload="rellenarEstrellas(${comentario.Calif})">
+                                              <tbody id="califEstrella" onload="rellenarEstrellas(${comentario.Calif})">
                                               <!-----ESTRELLAS------>
-                                              </div>
+                                              </tbody>
                                           </div>
                                       </div>
                                       <p>${comentario.Comentario}</p>
                                   
             `;
   
-        document.getElementById('comentarios').appendChild(productDiv);
+        document.getElementById('comentarios').appendChild(productcomDiv);
       }
     });
   }    

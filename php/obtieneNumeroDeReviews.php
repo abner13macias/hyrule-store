@@ -4,7 +4,7 @@
     $productoId = json_decode($_POST['productoId']);
     $query = "SELECT count(cal.Comentario) AS Cantidad
     FROM producto p, calificacion cal, usuario
-    WHERE p.IdProducto = cal.IdArticulo AND cal.IdUsuario= usuario.Id_Usuario AND p.IdProducto= 1";
+    WHERE p.IdProducto = cal.IdArticulo AND cal.IdUsuario= usuario.Id_Usuario AND p.IdProducto= $productoId";
     $result = mysqli_query($db,$query);
     if($result){
         $cantidad=mysqli_fetch_array($result);
@@ -20,7 +20,7 @@
             WHERE a.IdAccesorio = cal.IdArticulo AND cal.IdUsuario= usuario.Id_Usuario and a.IdAccesorio= $productoId";
             $result2 = mysqli_query($db,$query);
             if($result2) {
-                $response->data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                $response->data = mysqli_fetch_all($result2, MYSQLI_ASSOC);
                 $response->message = 'Se cargaron accesorios.';
                 echo json_encode($response);
                 mysqli_close($db);

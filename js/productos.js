@@ -1,7 +1,7 @@
 function getProductData() {
   const search_input = getQueryVariable('search_input');
   console.log(search_input);
-    $.get('php/productos.php', { search_input }, response => {
+    $.post('php/productos.php', { search_input }, response => {
       let resp = JSON.parse(response);
 
       for (const product of resp.data) {

@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body onload="cargarTicket()">
 
     <!-- Start Header Area -->
 	<header class="header_area sticky-header">
@@ -51,7 +51,7 @@
 							<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Comprar</a>
+								 aria-expanded="false">Checkout</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="category.html">Categorias</a></li>
 									<li class="nav-item"><a class="nav-link" href="single-product.html">Detalles de producto</a></li>
@@ -119,38 +119,7 @@
 
     <!--================Checkout Area =================-->
     <section class="checkout_area section_gap">
-        <div class="container">
-            <div class="returning_customer">
-                <div class="check_title">
-                    <h2>¿Cliente Frecuente? <a href="#">Click para iniciar sesion</a></h2>
-                </div>
-                <p>Sí haz comprado con nosotros antes, porfavor ingresa tus datos en la parte de abajo. Si eres nuevo, ingresa a la parte de facutarcion y envio.</p>
-                <form class="row contact_form" action="#" method="post" novalidate="novalidate">
-                    <div class="col-md-6 form-group p_star">
-                        <input type="text" class="form-control" id="name" name="name">
-                        <span class="placeholder" data-placeholder="Nombre de usuario o Email"></span>
-                    </div>
-                    <div class="col-md-6 form-group p_star">
-                        <input type="password" class="form-control" id="password" name="password">
-                        <span class="placeholder" data-placeholder="Contraseña"></span>
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <button type="submit" value="submit" class="primary-btn">login</button>
-                        <div class="creat_account">
-                            <input type="checkbox" id="f-option" name="selector">
-                            <label for="f-option">Recuerdame</label>
-                        </div>
-                        <a class="lost_pass" href="#">¿olvidaste tu contraseña?</a>
-                    </div>
-                </form>
-            </div>
-            <div class="cupon_area">
-                <div class="check_title">
-                    <h2>tienes un cupon? <a href="#">Click aquí para ingresar tu codigo</a></h2>
-                </div>
-                <input type="text" placeholder="Enter coupon code">
-                <a class="tp_btn" href="#">Aplicar Cupon</a>
-            </div>
+        <div class="container">            
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-8">
@@ -176,32 +145,8 @@
                                 <span class="placeholder" data-placeholder="Correo Electronico"></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <select class="country_select">
-                                    <option value="1">Estado</option>
-                                    <option value="2">Estado</option>
-                                    <option value="4">Estado</option>
-                                </select>
-                            </div>
-                            <div class="col-md-12 form-group p_star">
                                 <input type="text" class="form-control" id="add1" name="add1">
-                                <span class="placeholder" data-placeholder="Calle 1"></span>
-                            </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="add2" name="add2">
-                                <span class="placeholder" data-placeholder="Calle 2"></span>
-                            </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="city" name="city">
-                                <span class="placeholder" data-placeholder="Fraccionamiento"></span>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="zip" name="zip" placeholder="Codigo Postal">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <div class="creat_account">
-                                    <input type="checkbox" id="f-option2" name="selector">
-                                    <label for="f-option2">¿Crear una cuenta?</label>
-                                </div>
+                                <span class="placeholder" data-placeholder="Direccion"></span>
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">
@@ -216,25 +161,21 @@
                     <div class="col-lg-4">
                         <div class="order_box">
                             <h2>Tu Orden</h2>
-                            <ul class="list">
+                            <ul class="list" id="ticket">
                                 <li><a href="#">Product <span>Total</span></a></li>
-                                <li><a href="#">DualShock 4 <span class="middle">x 01</span> <span class="last">$1,199.00</span></a></li>
-                                <li><a href="#">PlayStation 4 Pro 1TB <span class="middle">x 01</span> <span class="last">$8,500.00</span></a></li>
-                                <li><a href="#">The Last Of Us 2 <span class="middle">x 01</span> <span class="last">$999.00</span></a></li>
+                                <!-- Carga productos ticket -->
                             </ul>
-                            <ul class="list list_2">
-                                <li><a href="#">Subtotal <span>$10,698.00</span></a></li>
-                                <li><a href="#">Envio <span>Full: $250.00</span></a></li>
-                                <li><a href="#">Total <span>$10,948.00</span></a></li>
+                            <ul class="list list_2" id="ticket2">
+                                <!-- Carga Total -->
                             </ul>
-                            <div class="payment_item">
+                           <!-- <div class="payment_item">
                                 <div class="radion_btn">
                                     <input type="radio" id="f-option5" name="selector">
                                     <label for="f-option5">Tarjeta De Credito</label>
                                     <div class="check"></div>
                                 </div>
                                 <p>Porfavor revise que los dato sean correctos.</p>
-                            </div>
+                            </div> -->
                             <div class="payment_item active">
                                 <div class="radion_btn">
                                     <input type="radio" id="f-option6" name="selector">
@@ -356,6 +297,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
 </body>
 
 </html>

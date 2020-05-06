@@ -32,7 +32,7 @@
 	<link rel="stylesheet" href="css/estrellas.css">
 </head>
 
-<body  onload="getCalif(); getProductoInfo(); cargaImagenes();">
+<body  onload="getCalif(); getProductoInfo(); getProductoComentarios(); cargaImagenes();">
 
 	<!-- Start Header Area -->
 	<header class="header_area sticky-header">
@@ -106,23 +106,21 @@
 
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb" >
-		<div class="container">
+		<!--<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
 					<h1></h1>
 					<nav class="d-flex align-items-center">
-						<a href="main.html">Inicio<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Nintendo<span class="lnr lnr-arrow-right"></span></a>
-						<a href="single-product.html">Nintendo Switch</a>
+                    AQUI ERA EL RASTRO DE NAVEGACION
 					</nav>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</section>
 	<!-- End Banner Area -->
 
 	<!--================Single Product Area =================-->
-	<body><div class="product_image_area" id="todo">
+	<body onload="cargaImagenes();"><div class="product_image_area" id="todo">
 		<!----------aqui va la info del producto----------------->
 	</div>
 	</body>
@@ -253,31 +251,31 @@
 								<!--aqui van los comentarios onload="getProductoComentarios()"-->
 							</div>
 						</div>
-						<div class="col-lg-6">
-							<div class="review_box">
+						<div class="col-lg-6" id="miComentario">
+							<!--<div class="review_box">
 								<h4>Añade una Review</h4>
 								<p>Tu califiación:</p>
 								<form id="estrellas">
 									<p class="clasificacion">
-									  <input id="radio1" type="radio" name="estrellas" value="5"><!--
-									  --><label id="estrellas" for="radio1">★</label><!--
-									  --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-									  --><label id="estrellas" for="radio2">★</label><!--
-									  --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-									  --><label id="estrellas" for="radio3">★</label><!--
-									  --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-									  --><label id="estrellas" for="radio4">★</label><!--
-									  --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-									  --><label id="estrellas" for="radio5">★</label>
+									  <input id="radio1" type="radio" name="estrellas" value="5">
+									  <label id="estrellas" for="radio1">★</label>
+									  <input id="radio2" type="radio" name="estrellas" value="4">
+									  <label id="estrellas" for="radio2">★</label>
+									  <input id="radio3" type="radio" name="estrellas" value="3">
+									  <label id="estrellas" for="radio3">★</label>
+									  <input id="radio4" type="radio" name="estrellas" value="2">
+									  <label id="estrellas" for="radio4">★</label>
+									  <input id="radio5" type="radio" name="estrellas" value="1">
+									  <label id="estrellas" for="radio5">★</label>
 									</p>
 								  </form>
 								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
 									<div class="col-md-12">
 										<div class="form-group">
-											<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'">
+											<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'">
 										</div>
 									</div>
-									<!--
+									
 									<div class="col-md-12">
 										<div class="form-group">
 											<input type="email" class="form-control" id="email" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
@@ -288,17 +286,17 @@
 											<input type="text" class="form-control" id="number" name="number" placeholder="Phone Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'">
 										</div>
 									</div>
-								-->
+								
 									<div class="col-md-12">
 										<div class="form-group">
-											<textarea class="form-control" name="message" id="message" rows="1" placeholder="Escribre tu comentario..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Review'"></textarea></textarea>
+											<textarea class="form-control" name="comentario" id="message" rows="1" placeholder="Escribre tu comentario..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Review'"></textarea></textarea>
 										</div>
 									</div>
 									<div class="col-md-12 text-right">
 										<button type="submit" value="submit" class="primary-btn">Enviar</button>
 									</div>
 								</form>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</div>

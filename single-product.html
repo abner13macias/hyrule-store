@@ -32,7 +32,7 @@
 	<link rel="stylesheet" href="css/estrellas.css">
 </head>
 
-<body>
+<body  onload="getCalif(); getProductoInfo(); cargaImagenes();">
 
 	<!-- Start Header Area -->
 	<header class="header_area sticky-header">
@@ -105,7 +105,7 @@
 	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->
-	<section class="banner-area organic-breadcrumb">
+	<section class="banner-area organic-breadcrumb" >
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
@@ -122,7 +122,7 @@
 	<!-- End Banner Area -->
 
 	<!--================Single Product Area =================-->
-	<body onload="getProductoInfo()"><div class="product_image_area" id="todo">
+	<body><div class="product_image_area" id="todo">
 		<!----------aqui va la info del producto----------------->
 	</div>
 	</body>
@@ -130,7 +130,8 @@
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
-	<section class="product_description_area">
+	<section class="product_description_area" >
+
 		<div class="container">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<!--	<li class="nav-item">
@@ -237,19 +238,19 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="row total_rate">
-								<div class="col-6">
-									<div class="box_total">
+								<div class="col-6" id="califprod">
+								<!--	<div class="box_total">
 										<h5>Calificación:</h5>
 										<h4 name="calificacionProducto">4.0</h4>
-									<H6>(<a name="cantidadReviews">03 </a>Reviews)</H6>
-									</div>
+									<H6>(<a name="cantidadReviews"></a>Reviews)</H6>
+									</div>-->
 								</div>
 								<div class="col-6">
 									
 								</div>
 							</div>
-							<div class="review_list"  onload="getProductoComentarios()" id="comentarios">
-								<!--aqui van los comentarios-->
+							<div class="review_list" id="comentarios">
+								<!--aqui van los comentarios onload="getProductoComentarios()"-->
 							</div>
 						</div>
 						<div class="col-lg-6">

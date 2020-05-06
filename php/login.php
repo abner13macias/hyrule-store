@@ -33,7 +33,8 @@
             $hashPass = $row["contrasenia"];
             if(password_verify ($pass, $hashPass)){
                 $_SESSION["Id_Usuario"] = $row["Id_Usuario"];
-                header('Location: ../main.html?Id_Usuario='.$_SESSION["Id_Usuario"]);
+                $_SESSION["Email"] = $row["Email"];
+                header('Location: ../checkMail.html?Id_Usuario='.$_SESSION["Id_Usuario"].'&email='.$_SESSION["Email"]);
             }
             else{
                 echo "<SCRIPT>

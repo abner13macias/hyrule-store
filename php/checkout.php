@@ -4,10 +4,10 @@
     $productObj = json_decode($_POST['compra']);
 
     $query = "SELECT p.Nombre, c.Cantidad, c.Subtotal FROM carrito c, producto p, usuario u 
-    WHERE p.IdProducto = c.IdArticulo AND c.IdUsuario = u.Id_Usuario AND u.Id_Usuario = 4 
+    WHERE p.IdProducto = c.IdArticulo AND c.IdUsuario = u.Id_Usuario AND u.Id_Usuario = $productObj->idUser 
 
     UNION ALL SELECT p.Nombre, c.Cantidad, c.Subtotal FROM carrito c, accesorio p, usuario u 
-    WHERE p.IdAccesorio = c.IdArticulo AND c.IdUsuario = u.Id_Usuario AND u.Id_Usuario = 4 ";
+    WHERE p.IdAccesorio = c.IdArticulo AND c.IdUsuario = u.Id_Usuario AND u.Id_Usuario = $productObj->idUser ";
     $result = mysqli_query($db,$query);
 
     if (!isset($response)) {

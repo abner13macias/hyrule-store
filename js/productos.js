@@ -1,9 +1,12 @@
 function getProductData() {
-  const search_input = getQueryVariable('search_input');
-  console.log(search_input);
-    $.post('php/productos.php', { search_input }, response => {
+  const search = getQueryVariable('search_input');
+  console.log(search);
+  const busqueda = JSON.stringify({
+    search
+  });
+    $.post('php/productos.php', { busqueda }, response => {
       let resp = JSON.parse(response);
-
+      console.log(resp.message);
       for (const product of resp.data) {
         /* Create category table row for each category on the response */
         let productDiv = document.createElement('div');

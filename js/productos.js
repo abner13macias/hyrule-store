@@ -21,7 +21,7 @@ function getProductData() {
         singleProduct.className = 'single-product';        
         singleProduct.innerHTML = `
                 <a href="single-product.html?IdArticulo=${product.IdArticulo}">
-                <img class="img-fluid" src="${product.Direccion}" alt="">
+                <img class="img-fluidcategory" src="${product.Direccion}" alt="">
                 </a>
                 <div class="product-details">
                     <a href="single-product.html?IdArticulo=${product.IdArticulo}">
@@ -68,7 +68,7 @@ function getProductData() {
         singleProduct.className = 'single-product';        
         singleProduct.innerHTML = `
                 <a href="single-product.html?IdArticulo=${product.IdArticulo}">
-                <img class="img-fluid" src="${product.Direccion}" alt="">
+                <img class="img-fluidcategory" src="${product.Direccion}" alt="">
                 </a>
                 <div class="product-details">
                     <a href="single-product.html?IdArticulo=${product.IdArticulo}">
@@ -123,7 +123,7 @@ function getProductData() {
         singleProduct.className = 'single-product';        
         singleProduct.innerHTML = `
                 <a href="single-product.html?IdArticulo=${product.IdArticulo}">
-                <img class="img-fluid" src="${product.Direccion}" alt="">
+                <img class="img-fluidcategory" src="${product.Direccion}" alt="">
                 </a>
                 <div class="product-details">
                     <a href="single-product.html?IdArticulo=${product.IdArticulo}">

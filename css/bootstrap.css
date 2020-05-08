@@ -511,8 +511,9 @@ mark {
 }
 
 .img-fluid {
-    max-height: 200px;
+    min-height: 249px;
     max-height: 250px;
+    object-fit: contain;
 }
 
 .img-thumbnail {

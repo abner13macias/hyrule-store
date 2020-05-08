@@ -36,11 +36,11 @@ function getProductoInfo() {
                           <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
                           <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                          <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp &amp & sst > 0 ) result.value--;return false;"
+                          <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) & sst > 1 ) result.value--;return false;"
                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                       </div>
                       <div class="card_area d-flex align-items-center">
-                          <a class="primary-btn" href="cart.html">Añadir al carrito</a>
+                          <a class="primary-btn" href="#" onclick="addCartButton(); return false;">Añadir al carrito</a>
                           <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
                           <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
                       </div>
@@ -48,7 +48,9 @@ function getProductoInfo() {
                   </div>`;
                   productDiv.appendChild(singleProduct);
                   document.getElementById('todo').appendChild(productDiv);
-              }else{
+              }
+              
+            else{
           let productDiv = document.createElement('div');
           productDiv.className = "container";
           let singleProduct = document.createElement('div');
@@ -75,11 +77,11 @@ function getProductoInfo() {
                           <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
                           <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                          <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp &amp & sst > 0 ) result.value--;return false;"
+                           <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) & sst > 0 ) result.value--;return false;"
                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                       </div>
                       <div class="card_area d-flex align-items-center">
-                          <a class="primary-btn" href="cart.html">Añadir al carrito</a>
+                          <a class="primary-btn" href="#" onclick="addCartButton(); return false;">Añadir al carrito</a>
                           <a class="icon_btn" onclick="addWishList(${productoId})"><i class="lnr lnr lnr-heart"></i></a>
                       </div>
                   </div>
@@ -94,6 +96,22 @@ function getProductoInfo() {
           }
           )}
 
+ function addCartButton(){
+     const idUser = localStorage.getItem("Id_Usuario");
+     const idArticle = getQueryVariable("IdArticulo");     
+     const cantidad = document.getElementById('sst').value;
+     const article = JSON.stringify({
+          idUser,
+          idArticle,
+          cantidad
+     });
+     console.log(article);     
+    $.post('php/carritoSingle.php', { article }, response => {
+        let resp = JSON.parse(response);
+       alert(resp.message);
+             });
+}
+ 
           
  function addWishList(idProducto){
      const IdProducto = idProducto;

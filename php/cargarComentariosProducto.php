@@ -16,7 +16,7 @@
     }
 
     if($result) {
-        $response->data = mysqli_fetch_assoc($result);
+        $response->data = mysqli_fetch_all($result,MYSQLI_ASSOC);
         $response->message = 'comentarios cargados';
         echo json_encode($response);
         mysqli_close($db);

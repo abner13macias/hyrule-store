@@ -14,7 +14,6 @@
 
 input[type="radio"] {
   display: none;
-  font-size: 80px;
 }
 
 label [id="estrellas"]{
@@ -34,3 +33,4 @@ label:hover ~ label {
 input[type="radio"]:checked ~ label {
   color: orange;
 }
+

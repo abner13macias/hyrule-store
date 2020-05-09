@@ -24,12 +24,7 @@ function cargarCarrito(){
                 </td>
                 <td>
                     <div class="product_count">
-                        <input type="text" name="qty" id="sst" maxlength="12" value="${article.Cantidad}" title="Quantity:"
-                            class="input-text qty">
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp &amp & sst > 0 ) result.value--;return false;"
-                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                        <p>${article.Descripcion} </p>
                     </div>
                 </td>
             `;
@@ -38,9 +33,9 @@ function cargarCarrito(){
             document.getElementById('carrito').appendChild(articleTR);
         }
 
-        let bottomButton = document.createElement('tr');
-        bottomButton.className = "bottom_button";
-        bottomButton.innerHTML = ` 
+        //let bottomButton = document.createElement('tr');
+        //bottomButton.className = "bottom_button";
+        /*bottomButton.innerHTML = ` 
         <td>
             <a class="gray_btn" href="carrito.html">Actualizar carrito</a>
         </td>
@@ -56,7 +51,7 @@ function cargarCarrito(){
                 <a class="primary-btn" href="#">Apply</a>
             </div>
         </td>
-        ` ;
+        ` ;*/
 
         let subtotalTR = document.createElement('tr');
         subtotalTR.innerHTML = `
@@ -93,8 +88,7 @@ function cargarCarrito(){
                     <option value="2">Seleccionar Estado</option>
                     <option value="4">Seleccionar Estado</option>
                 </select>
-                <input type="text" placeholder="Codigo Postal">
-                <a class="gray_btn" href="#">Actualizar Direccion</a>
+                <input type="text" placeholder="Codigo Postal">                
             </div>
         </td>
         `;
@@ -112,13 +106,13 @@ function cargarCarrito(){
         </td>
         <td>
             <div class="checkout_btn_inner d-flex align-items-center">
-                <a class="gray_btn" href="#">Continuar comprando</a>
-                <a class="primary-btn" href="#">Checkout</a>
+                <a class="gray_btn" href="category.html">Continuar comprando</a>
+                <a class="primary-btn" href="checkout.html">Checkout</a>
             </div>
         </td>
         `;
 
-        document.getElementById('carrito').appendChild(bottomButton);
+       // document.getElementById('carrito').appendChild(bottomButton);
         document.getElementById('carrito').appendChild(subtotalTR);
         document.getElementById('carrito').appendChild(shipping);
         document.getElementById('carrito').appendChild(outButton);

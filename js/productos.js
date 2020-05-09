@@ -198,6 +198,7 @@ function getProductData() {
         document.getElementById('listageneros').appendChild(productDiv);
       }
     });
+    window.scrollTo(0,350)
   }
 
 function addWishList(idArticulo){

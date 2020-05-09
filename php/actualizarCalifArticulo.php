@@ -1,44 +1,42 @@
 <?php
     session_start();
     require_once 'config.php';
-   // $idArticulo = json_decode($_POST['IdArticulo']);
-    $query = "SELECT FORMAT(AVG(c.Calif), 1) 
-    from calificacion c, producto p where p.IdProducto=c.IdArticulo and p.IdProducto=1000
-    UNION ALL 
-    SELECT FORMAT(AVG(c.Calif) , 1) 
-    from calificacion c, accesorio a where a.IdAccesorio=c.IdArticulo and a.IdAccesorio=1000 ";
+   // $idArticulo = 1;
+    $idArticulo = json_decode($_POST['IdArticulo']);
+    $query = "SELECT FORMAT(AVG(c.Calif), 1) as calificacion
+    from calificacion c, producto p where p.IdProducto=c.IdArticulo and p.IdProducto=$idArticulo";
     $result = mysqli_query($db,$query);
-    if($result){
-        $cali=mysqli_fetch_array($result);
-        echo($cali);
-        /*if ($cali[0]!=null) {
-            $califi=$cali[0];
+    if($result) {
+        $cali=mysqli_fetch_assoc($result);
+        if ($cali["calificacion"]!=null) {   
+            $califi=$cali["calificacion"];
             $query2="UPDATE producto
-            SET Calificacion='$califi' WHERE IdProducto= 1000"
+            SET Calificacion='$califi' WHERE IdProducto= $idArticulo";
             $result2 = mysqli_query($db,$query2);
-            $response->data = mysqli_fetch_array($result2);
-            $response->message = 'Se Actualizo la Calificacion del producto.';
-            echo json_encode($response);
+            //$response->data = mysqli_fetch_array($result2);
+            echo ('Se Actualizo la Calificacion del producto.');
             mysqli_close($db);
         }
         else{
-            $califi=$cali[1];
-            $query2 = "UPDATE accesorio
-            SET Calificacion='$califi' WHERE IdAccesorio= 1000 ";
+          
+            $query2="SELECT FORMAT(AVG(c.Calif) , 1) as calificacion
+            from calificacion c, accesorio a where a.IdAccesorio=c.IdArticulo and a.IdAccesorio=$idArticulo";
             $result2 = mysqli_query($db,$query2);
-            if($result2) {
-                $response->data = mysqli_fetch_array($result2);
-                $response->message = 'Se Actualizo la Calificacion del accesorio.';
-                echo json_encode($response);
+            $cali2=mysqli_fetch_assoc($result2);
+            $califi=$cali2["calificacion"];
+            $query2 = "UPDATE accesorio
+            SET Calificacion='$califi' WHERE IdAccesorio=$idArticulo";
+            $result2 = mysqli_query($db,$query2);
+            if($result2) {    
+                //$response->data = mysqli_fetch_array($result2);
+                echo ("Se Actualizo la Calificacion del accesorio.");
                 mysqli_close($db);
             } else {
-                $response->message = 'Error al Actualizar la Calificacion.';
-                echo json_encode($response);
+                echo ("No Se Actualizo la Calificacion del accesorio.");
                 mysqli_close($db);
             }
-        }*/
+        }
     } else{
-        $response->message = 'Error al cargar la tabla productos.';
-        echo json_encode($response);
+        echo ('Error al cargar la tabla productos.');
         mysqli_close($db);
     }

@@ -155,7 +155,7 @@ function getProductoInfo() {
     productcalDiv.className = 'box_total'; 
     productcalDiv.innerHTML = `<h5>Calificación:</h5>
         <h4 name="calificacionProducto">${resp.data.Calificacion}</h4>
-        <H6>(<a name="cantidadReviews">${resp.data.Cantidad}</a>Reviews)</H6>`;
+       <p><H6>(<a name="cantidadReviews">${resp.data.Cantidad} </a>Reviews)</H6></p>`;
 
     document.getElementById('califprod').appendChild(productcalDiv); 
 
@@ -181,7 +181,7 @@ function getProductoInfo() {
                                           </div>
                                           <div class="media-body">
                                               <h4>${comentario.Nombre} ${comentario.ApellidoPaterno}</h4>
-                                              <div id="califEstrella">
+                                              <div id="${comentario.IdCalif}">
                                               <!-----ESTRELLAS------>
                                               </div>
                                           </div>
@@ -190,13 +190,14 @@ function getProductoInfo() {
                                   
             `;
             var calif=comentario.Calif;
+           var idcoment=comentario.IdCalif;
         document.getElementById('comentarios').appendChild(productcomDiv);
         for (let index = 0; index<=calif; index++)  {
           
             let productEstrellaCalif = document.createElement('i');
             productEstrellaCalif.className = 'fa fa-star'; 
       
-            document.getElementById('califEstrella').appendChild(productEstrellaCalif);
+            document.getElementById(idcoment).appendChild(productEstrellaCalif);
           }
       }
     }
@@ -232,6 +233,7 @@ function getProductoInfo() {
         }
   }*/
     function miComentario(){
+        const IdArticulo = getQueryVariable('IdArticulo');
         const idusuario=4;
     //const idusuario = localStorage.getItem("Id_Usuario");
     $.post('php/obtieneNombreUsuario.php', { idusuario }, response => 
@@ -265,11 +267,11 @@ function getProductoInfo() {
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                <textarea class="form-control" name="comentario" id="message" rows="1" placeholder="Escribre tu comentario..." ></textarea></textarea>
+                <textarea class="form-control" id="message" rows="1" placeholder="Escribre tu comentario..." ></textarea>
             </div>
         </div>
         <div class="col-md-12 text-right">
-            <button class="primary-btn" onclick="enviarComentario()">Enviar</button>
+        <input type="button" class="primary-btn" onclick="enviarComentario()" value="Enviar">
         </div>
     </form>`;
 
@@ -285,7 +287,7 @@ function getProductoInfo() {
 
         var calif=1;
         if(document.getElementById('radio1').checked){
-            calif=5;
+            calif=5; 
         }
         if(document.getElementById('radio2').checked){
             calif=4;
@@ -301,7 +303,7 @@ function getProductoInfo() {
         }
 
         //esto no se si esta bien alv 
-        const comentario = $('textarea[name=comentario]').val();
+        const comentario = $('textarea[id=message]').val();
         //console.log(calif);
         const coment = JSON.stringify({
             idusuario,
@@ -309,15 +311,13 @@ function getProductoInfo() {
             calif, 
             comentario
         });
-         alert(coment);
-        $.post('php/registrarComentario.php', { coment }, response => {
+       alert(coment);
+       $.post('php/registrarComentario.php', {coment}, response =>{
             let resp = JSON.parse(response);
-           // location.href = 'single-product.html?IdArticulo='+IdArticulo;
-        });
-        $.post('php/actualizarCalifArticulo.php', {  IdArticulo }, response => {
-            let resp = JSON.parse(response);
-           location.href = 'single-product.html?IdArticulo='+IdArticulo;
-        });
+            console.log(resp.message);
+           
+        } );
+        location.href = 'single-product.html?IdArticulo='+IdArticulo;
     }
 
 

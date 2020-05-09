@@ -2,11 +2,11 @@
     session_start();
     require_once 'config.php';
     $productoId = json_decode($_POST['productoId']);
-    $query = "SELECT cal.Calif, cal.Comentario, usuario.Nombre, usuario.ApellidoPaterno
+    $query = "SELECT cal.Calif, cal.Comentario, usuario.Nombre, usuario.ApellidoPaterno, cal.IdCalif
     FROM producto p, calificacion cal, usuario
     WHERE p.IdProducto = cal.IdArticulo AND cal.IdUsuario= usuario.Id_Usuario AND p.IdProducto=$productoId
     UNION ALL 
-    SELECT cal.Calif, cal.Comentario, usuario.Nombre, usuario.ApellidoPaterno
+    SELECT cal.Calif, cal.Comentario, usuario.Nombre, usuario.ApellidoPaterno, cal.IdCalif
     FROM accesorio a, calificacion cal, usuario
     WHERE a.IdAccesorio = cal.IdArticulo AND cal.IdUsuario= usuario.Id_Usuario and a.IdAccesorio=$productoId";
     $result = mysqli_query($db,$query);

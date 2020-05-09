@@ -77,3 +77,10 @@ function logOut(){
     localStorage.removeItem("Id_Usuario");
     window.location = "index.html"
 }
+
+function validarSesion(){
+    const idUser = localStorage.getItem("Id_Usuario");
+    if(idUser){
+        window.location.href = 'main.html';
+    }
+}

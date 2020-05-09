@@ -2,10 +2,59 @@ function getProductData() {
   const searchm = getQueryVariable('search_input');
   const searchg = getQueryVariable('IdGenero');
   const searchc = getQueryVariable('IdCategoria');
+  const searchmm = getQueryVariable('IdMarca');
   console.log(searchm);
   console.log(searchc);
   console.log(searchg);
-  if(searchc!=""){
+  console.log(searchmm);
+  if(searchmm!=""){
+    const busquedam = JSON.stringify({
+      searchmm
+    });
+    $.post('php/productosm.php', { busquedam }, response => {
+      let resp = JSON.parse(response);
+      console.log(resp.message);
+      for (const product of resp.data) {
+        /* Create category table row for each category on the response */
+        let productDiv = document.createElement('div');
+        productDiv.className = 'col-lg-4 col-md-6';
+
+        let singleProduct = document.createElement('div');
+        singleProduct.className = 'single-product';        
+        singleProduct.innerHTML = `
+                <a href="single-product.html?IdArticulo=${product.IdArticulo}">
+                <img class="img-fluidcategory" src="${product.Direccion}" alt="">
+                </a>
+                <div class="product-details">
+                    <a href="single-product.html?IdArticulo=${product.IdArticulo}">
+                    <h6>${product.Nombre}</h6>
+                        </a>
+                <div class="price">
+                    <h6>$${product.Precio}</h6>
+                    </div>
+                    <div class="prd-bottom">
+
+                        <a href="#" class="social-info" onclick="addCart(${product.IdArticulo}); return false;">
+                            <span class="ti-bag"></span>
+                            <p class="hover-text">Carrito</p>
+                        </a>
+                        <a href="#" class="social-info" onclick="addWishList(${product.IdArticulo}); return false;">
+                            <span class="lnr lnr-heart"></span>
+                            <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="single-product.html?IdArticulo=${product.IdArticulo}" class="social-info">
+                            <span class="lnr lnr-move"></span>
+                            <p class="hover-text">Ver más</p>
+                        </a>
+            `;
+  
+        
+        productDiv.appendChild(singleProduct);
+        document.getElementById('productos').appendChild(productDiv);
+      }
+    });
+  }
+  else if(searchc!=""){
     const busquedac = JSON.stringify({
       searchc
     });

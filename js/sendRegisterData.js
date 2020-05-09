@@ -20,11 +20,18 @@ function submitFormData() {
         fecha_Nac,
         fecha_Actual
     });
-    $.post('php/registrarUsuario.php', { user }, response => {
-        let resp = JSON.parse(response);
-        console.log(resp.message);
-        location.href = "index.html";
-    });
+
+    if(userName == "" && ap_Patern=="" && ap_Matern=="" && pass=="" || address=="" || phone=="" ||email==""
+    || fecha_Nac=="" || fecha_Actual==""){
+        alert("Llena todos los campos!");
+    }
+    else{
+        $.post('php/registrarUsuario.php', { user }, response => {
+            let resp = JSON.parse(response);
+            alert(resp.message);
+            location.href = "index.html";
+        });
+    }
 }
 
 	

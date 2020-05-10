@@ -157,7 +157,7 @@
                                 </div>
                                 <p>Porfavor revise que los dato sean correctos.</p>
                             </div> -->
-                            <div class="payment_item active">
+                            <!--<div class="payment_item active">
                                 <div class="radion_btn">
                                     <input type="radio" id="f-option6" name="selector">
                                     <label for="f-option6">Paypal </label>
@@ -165,15 +165,22 @@
                                     <div class="check"></div>
                                 </div>
                                 <p>Pagar via PayPal; puedes pagar con tarjeta de credito si no cuentas con cuenta de PayPal.</p>
-                            </div>
+                            </div>-->
                             <div class="creat_account">
                                 <input type="checkbox" id="f-option4" name="selector">
                                 <label for="f-option4">He leido y acepto</label>
                                 <a href="#">terminos y condiciones*</a>
                             </div>
-                            <a class="primary-btn" href="confirmation.html">Proceder con el pago</a>
+                            
+                            <div id="paypal-button-container"></div>
+                            <script src="https://www.paypal.com/sdk/js?client-id=AVbWyaY8V3e4LlbuKFEV3wLDtBAadSSEz3MaCyVYeEeRbUZHukfS8TZ268OMi-qrXXPzMwEloAHqvRkA&currency=MXN" data-sdk-integration-source="button-factory"></script>
+                            
+                            
                         </div>
+
+                        
                     </div>
+
                 </div>
             </div>
         </div>

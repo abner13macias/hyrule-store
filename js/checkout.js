@@ -32,5 +32,30 @@ function cargarTicket(){
         <a href="#">Total <span>$${subtotal+105}</span></a>
         `;
         document.getElementById('ticket2').appendChild(total);
+         console.log(subtotal+105);
+                                  paypal.Buttons({
+                                      style: {
+                                          shape: 'rect',
+                                          color: 'gold',
+                                          layout: 'vertical',
+                                          label: 'paypal',
+                                
+                                      },
+                                      createOrder: function(data, actions) {
+                                          return actions.order.create({
+                                              purchase_units: [{
+                                                  amount: {
+                                                      value: subtotal+105,
+                                                  }
+                                              }]
+                                          });
+                                      },
+                                      onApprove: function(data, actions) {
+                                          return actions.order.capture().then(function(details) {
+                                              alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                          });
+                                      }
+                                  }).render('#paypal-button-container');
+        
     });
 }

@@ -317,9 +317,9 @@ function getProductoInfo() {
        //alert(coment);
        $.post('php/registrarComentario.php', {coment}, response =>{
             let resp = JSON.parse(response);
-            console.log(resp.message);
+            //console.log(resp.message);
            alert(resp.message)
-        } );
+        });
         location.href = 'single-product.html?IdArticulo='+IdArticulo;
     }
 

@@ -12,31 +12,31 @@ if(mysqli_query($db, $query)) {
     }
 
 
-    $query = "SELECT FORMAT(AVG(c.Calif), 1) as calificacion
+    $query2 = "SELECT FORMAT(AVG(c.Calif), 1) as calificacion
     from calificacion c, producto p where p.IdProducto=c.IdArticulo and p.IdProducto=$datos->IdArticulo";
-    $result = mysqli_query($db,$query);
-    if($result) {
-        $cali=mysqli_fetch_assoc($result);
+    $result2 = mysqli_query($db,$query2);
+    if($result2) {
+        $cali=mysqli_fetch_assoc($result2);
         if ($cali["calificacion"]!=null) {   
             $califi=$cali["calificacion"];
-            $query2="UPDATE producto
+            $query3="UPDATE producto
             SET Calificacion='$califi' WHERE IdProducto= $datos->IdArticulo";
-            $result2 = mysqli_query($db,$query2);
+            $result3 = mysqli_query($db,$query3);
             //$response->data = mysqli_fetch_array($result2);
             echo ('Se Actualizo la Calificacion del producto.');
             mysqli_close($db);
         }
         else{
           
-            $query2="SELECT FORMAT(AVG(c.Calif) , 1) as calificacion
+            $query4="SELECT FORMAT(AVG(c.Calif) , 1) as calificacion
             from calificacion c, accesorio a where a.IdAccesorio=c.IdArticulo and a.IdAccesorio=$datos->IdArticulo";
-            $result2 = mysqli_query($db,$query2);
-            $cali2=mysqli_fetch_assoc($result2);
+            $result4 = mysqli_query($db,$query4);
+            $cali2=mysqli_fetch_assoc($result4);
             $califi=$cali2["calificacion"];
-            $query2 = "UPDATE accesorio
+            $query5 = "UPDATE accesorio
             SET Calificacion='$califi' WHERE IdAccesorio=$datos->IdArticulo";
-            $result2 = mysqli_query($db,$query2);
-            if($result2) {    
+            $result5 = mysqli_query($db,$query5);
+            if($result5) {    
                 //$response->data = mysqli_fetch_array($result2);
                 echo ("Se Actualizo la Calificacion del accesorio.");
                 mysqli_close($db);

@@ -10,7 +10,7 @@ function getEmployeeData() {
                 <td id="category-desc-${employee.IdEmpleado}">${employee.ApellidoPaterno}</td>
                 <td id="category-desc-${employee.IdEmpleado}">${employee.ApellidoMaterno}</td>
                 <td id="category-desc-${employee.IdEmpleado}">${employee.Telefono}</td>
-                <td id="category-desc-${employee.IdEmpleado}">${employee.NombreRol}</td>
+                <td id="category-desc-${employee.IdEmpleado}">${employee.Nombre}</td>
                 <td id="category-desc-${employee.IdEmpleado}">${employee.email}</td>
   
                 <td>

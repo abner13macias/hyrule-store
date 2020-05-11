@@ -114,10 +114,13 @@ function getProductoInfo() {
  
           
  function addWishList(idProducto){
-     const IdProducto = idProducto;
-     const producto = JSON.stringify({ IdProducto
-              });
-    $.post('php/wishlist.php', { producto }, response => {
+     const idUser = localStorage.getItem("Id_Usuario");
+     const idArticle = idProducto;
+     const article = JSON.stringify({
+        idUser,
+        idArticle
+    });
+    $.post('php/wishlist.php', { article }, response => {
          let resp = JSON.parse(response);
         alert(resp.message);
               });
@@ -234,8 +237,8 @@ function getProductoInfo() {
   }*/
     function miComentario(){
         const IdArticulo = getQueryVariable('IdArticulo');
-        const idusuario=4;
-    //const idusuario = localStorage.getItem("Id_Usuario");
+       // const idusuario=4;
+    const idusuario = localStorage.getItem("Id_Usuario");
     $.post('php/obtieneNombreUsuario.php', { idusuario }, response => 
     {
     let resp = JSON.parse(response);
@@ -281,8 +284,8 @@ function getProductoInfo() {
     }
     function enviarComentario(){
 
-        //const idusuario = localStorage.getItem("Id_Usuario");
-        const idusuario=4;
+        const idusuario = localStorage.getItem("Id_Usuario");
+        //const idusuario=4;
         const IdArticulo = getQueryVariable('IdArticulo');
 
         var calif=1;

@@ -51,6 +51,23 @@ function cargarTicket(){
                                           });
                                       },
                                       onApprove: function(data, actions) {
+                                          const total = subtotal+105;
+                                          const status = 'Finalizado';
+                                          const fecha = getDate();
+                                          const idcarrito = article.idcarrito;
+
+                                        const carrito = JSON.stringify({
+                                            total,
+                                            status,
+                                            fecha,
+                                            idcarrito
+                                            
+                                        });
+                                        $.post('php/registrarventa.php', { carrito }, response => {
+                                            let resp = JSON.parse(response);
+                                            alert(resp.message);
+                                        });
+
                                           return actions.order.capture().then(function(details) {
                                               alert('Transaction completed by ' + details.payer.name.given_name + '!');
                                           });

@@ -175,10 +175,10 @@ function getProductoInfo() {
         /* Create category table row for each category on the response */
         let productcomDiv = document.createElement('div');
         productcomDiv.className = 'review_item'; 
-        productcomDiv.innerHTML = `<div class="media">
-                                          <div class="d-flex">
+        productcomDiv.innerHTML = `<div class="media" style="margin-top:50px">
+                                          <!--<div class="d-flex">
                                               <img src="img/product/review-1.png" alt="">
-                                          </div>
+                                          </div>-->
                                           <div class="media-body">
                                               <h4>${comentario.Nombre} ${comentario.ApellidoPaterno}</h4>
                                               <div id="${comentario.IdCalif}">
@@ -192,7 +192,7 @@ function getProductoInfo() {
             var calif=comentario.Calif;
            var idcoment=comentario.IdCalif;
         document.getElementById('comentarios').appendChild(productcomDiv);
-        for (let index = 0; index<=calif; index++)  {
+        for (let index = 0; index<calif; index++)  {
           
             let productEstrellaCalif = document.createElement('i');
             productEstrellaCalif.className = 'fa fa-star'; 
@@ -262,7 +262,7 @@ function getProductoInfo() {
     <form class="row contact_form">
         <div class="col-md-12">
             <div class="form-group">
-                <p class="form-control" id="nombre" name="nombre" placeholder="Nombre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'">${resp.data.Nombre} ${resp.data.ApellidoPaterno} ${resp.data.ApellidoMaterno}</p>
+                <p class="media-body" id="nombre" name="nombre">${resp.data.Nombre} ${resp.data.ApellidoPaterno} ${resp.data.ApellidoMaterno}</p>
             </div>
         </div>
         <div class="col-md-12">

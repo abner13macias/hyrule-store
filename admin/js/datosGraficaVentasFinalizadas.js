@@ -33,7 +33,7 @@ $(document).ready(function() {
             mostrar.height = 280;
 
             var grafico = new Chart(mostrar, {
-                type: 'bar',
+                type: 'line',
                 data: chartdata,
                 options: {
                     responsive: true,

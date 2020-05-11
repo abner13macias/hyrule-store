@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "php/obtieneGraficaConsola.php",
+        url: "php/obtieneGraficaVentasStatus.php",
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         method: "GET",
@@ -12,7 +12,7 @@ $(document).ready(function() {
             console.log(data);
 
             for (var i in data) {
-                nombre.push(data[i].Nombre);
+                nombre.push(data[i].Status);
                 cantidad.push(data[i].Cantidad);
             }
 

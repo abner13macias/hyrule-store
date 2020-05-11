@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once 'config.php';
-    $query = "SELECT `Fecha`, COUNT(`Fecha`) AS Cantidad FROM `venta` WHERE `Status`= 'En Proceso' GROUP BY `Fecha` ORDER BY `Fecha` ASC";
+    $query = "SELECT `Fecha`, COUNT(`Fecha`) AS Cantidad FROM `venta` WHERE `Status`= 'Proceso' GROUP BY `Fecha` ORDER BY `Fecha` ASC";
     $result = mysqli_query($db,$query);
     // Hacemos un bucle con los datos obntenidos
     $data = array();

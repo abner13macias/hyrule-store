@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "php/obtieneGraficaVentasStatus.php",
+        url: "php/obtieneGraficaConsola.php",
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         method: "GET",
@@ -12,7 +12,7 @@ $(document).ready(function() {
             console.log(data);
 
             for (var i in data) {
-                nombre.push(data[i].Status);
+                nombre.push(data[i].Nombre);
                 cantidad.push(data[i].Cantidad);
             }
 
@@ -33,7 +33,7 @@ $(document).ready(function() {
             mostrar.height = 280;
 
             var grafico = new Chart(mostrar, {
-                type: 'pie',
+                type: 'doughnut',
                 data: chartdata,
                 options: {
                     responsive: true,

@@ -251,7 +251,7 @@ function miComentario() {
             </div>
         </div>
         <div class="col-md-12 text-right">
-        <input type="button" class="primary-btn" onclick="enviarComentario()" value="Enviar">
+        <input type="button" class="primary-btn" onclick="enviarComentario()" value="Envíar">
         </div>
     </form>`;
 
@@ -260,7 +260,6 @@ function miComentario() {
 }
 function enviarComentario() {
   const idusuario = localStorage.getItem('Id_Usuario');
-  //const idusuario=4;
   const IdArticulo = getQueryVariable('IdArticulo');
 
   var calif = 1;
@@ -280,20 +279,16 @@ function enviarComentario() {
     calif = 1;
   }
 
-  //esto no se si esta bien alv
   const comentario = $('textarea[id=message]').val();
-  //console.log(calif);
   const coment = JSON.stringify({
     idusuario,
     IdArticulo,
     calif,
     comentario,
   });
-  //alert(coment);
   $.post('php/registrarComentario.php', { coment }, (response) => {
     let resp = JSON.parse(response);
-    //console.log(resp.message);
     alert(resp.message);
+    location.href = 'single-product.html?IdArticulo=' + IdArticulo;
   });
-  location.href = 'single-product.html?IdArticulo=' + IdArticulo;
 }

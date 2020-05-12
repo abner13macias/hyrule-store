@@ -1,24 +1,22 @@
-function getProductoInfo() {
+async function getProductoInfo() {
+  const productoId = getQueryVariable('IdArticulo');
 
-    const productoId = getQueryVariable('IdArticulo');
-  
-    // const productoId = "1000";
-    
-        $.post('php/obtieneCamposProducto.php', { productoId }, response => {
-          
-          let resp = JSON.parse(response);
-          //console.log(resp.data);
-          calif=resp.data.Calificacion;
+  // const productoId = "1000";
 
-          if(isNaN(resp.data.Genero)){
-          let productDiv = document.createElement('div');
-          productDiv.className = "container";
-          let singleProduct = document.createElement('div');
-          singleProduct.className = 'row s_product_inner';
-          singleProduct.innerHTML = `
+  await $.post('php/obtieneCamposProducto.php', { productoId }, (response) => {
+    let resp = JSON.parse(response);
+    //console.log(resp.data);
+    calif = resp.data.Calificacion;
+
+    let productDiv = document.createElement('div');
+    productDiv.className = 'container';
+    let singleProduct = document.createElement('div');
+    singleProduct.className = 'row s_product_inner';
+    if (isNaN(resp.data.Genero)) {
+      singleProduct.innerHTML = `
           <div class="col-lg-6">
           <div class="s_Product_carousel" id="imagen"  >
-              <!----- aqui van las imagenes------->        
+              <!----- aqui van las imagenes------->
            </div>
               </div>
               <div class="col-lg-5 offset-lg-1">
@@ -46,21 +44,13 @@ function getProductoInfo() {
                       </div>
                   </div>
                   </div>`;
-                  productDiv.appendChild(singleProduct);
-                  document.getElementById('todo').appendChild(productDiv);
-              }
-              
-            else{
-          let productDiv = document.createElement('div');
-          productDiv.className = "container";
-          let singleProduct = document.createElement('div');
-          singleProduct.className = 'row s_product_inner';
-          singleProduct.innerHTML = `
+    } else {
+      singleProduct.innerHTML = `
           <div class="col-lg-6">
           <div class="s_Product_carousel" id="imagen" >
-              
-          <!----- aqui van las imagenes------->        
-                
+
+          <!----- aqui van las imagenes------->
+
                   </div>
               </div>
               <div class="col-lg-5 offset-lg-1">
@@ -86,98 +76,88 @@ function getProductoInfo() {
                       </div>
                   </div>
                   </div>`;
-                  productDiv.appendChild(singleProduct);
-                  document.getElementById('todo').appendChild(productDiv);
-                
-  
-              }
-              califprod=resp.data.Calificacion;
-          
-          }
-          )}
-
- function addCartButton(){
-     const idUser = localStorage.getItem("Id_Usuario");
-     const idArticle = getQueryVariable("IdArticulo");     
-     const cantidad = document.getElementById('sst').value;
-     const article = JSON.stringify({
-          idUser,
-          idArticle,
-          cantidad
-     });
-     console.log(article);     
-    $.post('php/carritoSingle.php', { article }, response => {
-        let resp = JSON.parse(response);
-       alert(resp.message);
-             });
+    }
+    productDiv.appendChild(singleProduct);
+    document.getElementById('todo').appendChild(productDiv);
+    califprod = resp.data.Calificacion;
+  });
 }
- 
-          
- function addWishList(idProducto){
-     const idUser = localStorage.getItem("Id_Usuario");
-     const idArticle = idProducto;
-     const article = JSON.stringify({
-        idUser,
-        idArticle
-    });
-    $.post('php/wishlist.php', { article }, response => {
-         let resp = JSON.parse(response);
-        alert(resp.message);
-              });
-            }
 
- function cargaImagenes(){
-    const productoId = getQueryVariable('IdArticulo');
-                //const productoId = "1000";
-    $.post('php/cargarImagenesProducto.php', { productoId }, response => 
-         {
-         let resp = JSON.parse(response);
-         
-              
-         for (const imagen of resp.data) {
-        // Create category table row for each category on the response 
-            let productImgDiv = document.createElement('div');
-                productImgDiv.className = 'single-prd-item'; 
-                productImgDiv.innerHTML = `
+function addCartButton() {
+  const idUser = localStorage.getItem('Id_Usuario');
+  const idArticle = getQueryVariable('IdArticulo');
+  const cantidad = document.getElementById('sst').value;
+  const article = JSON.stringify({
+    idUser,
+    idArticle,
+    cantidad,
+  });
+  console.log(article);
+  $.post('php/carritoSingle.php', { article }, (response) => {
+    let resp = JSON.parse(response);
+    alert(resp.message);
+  });
+}
+
+function addWishList(idProducto) {
+  const idUser = localStorage.getItem('Id_Usuario');
+  const idArticle = idProducto;
+  const article = JSON.stringify({
+    idUser,
+    idArticle,
+  });
+  $.post('php/wishlist.php', { article }, (response) => {
+    let resp = JSON.parse(response);
+    alert(resp.message);
+  });
+}
+
+function cargaImagenes() {
+  const productoId = getQueryVariable('IdArticulo');
+  $.post('php/cargarImagenesProducto.php', { productoId }, (response) => {
+    let resp = JSON.parse(response);
+
+    for (const imagen of resp.data) {
+      // Create category table row for each category on the response
+      let productImgDiv = document.createElement('div');
+      productImgDiv.className = 'single-prd-item';
+      productImgDiv.innerHTML = `
                       <img class="img-fluid" name= "imgen1"  src="${imagen.Direccion}" alt="">
                           `;
-                
-                      document.getElementById('imagen').appendChild(productImgDiv);
-                    }
-                  });
-            }
-  
-  function getCalif(){
-    const productoId = getQueryVariable('IdArticulo');
-    //console.log("Calificacion: ");
-    $.post('php/obtieneNumeroDeReviews.php', { productoId }, response => 
-    {
+
+      document.getElementById('imagen').appendChild(productImgDiv);
+    }
+  });
+}
+
+function getCalif() {
+  const productoId = getQueryVariable('IdArticulo');
+  //console.log("Calificacion: ");
+  $.post('php/obtieneNumeroDeReviews.php', { productoId }, (response) => {
     let resp = JSON.parse(response);
     //console.log(resp.data);
     let productcalDiv = document.createElement('div');
-    productcalDiv.className = 'box_total'; 
+    productcalDiv.className = 'box_total';
     productcalDiv.innerHTML = `<h5>Calificación:</h5>
         <h4 name="calificacionProducto">${resp.data.Calificacion}</h4>
        <p><H6>(<a name="cantidadReviews">${resp.data.Cantidad} </a>Reviews)</H6></p>`;
 
-    document.getElementById('califprod').appendChild(productcalDiv); 
-
+    document.getElementById('califprod').appendChild(productcalDiv);
   });
 }
 
-  function getProductoComentarios(){
+function getProductoComentarios() {
   const productoId = getQueryVariable('IdArticulo');
-   //const productoId = "1000";
-  $.post('php/cargarComentariosProducto.php', { productoId }, response => 
-  {
-      let resp = JSON.parse(response);
-      //console.log(resp.data);
-        if(resp.data!=null){
+  //const productoId = "1000";
+  $.post('php/cargarComentariosProducto.php', { productoId }, (response) => {
+    let resp = JSON.parse(response);
+    //console.log(resp.data);
+    if (resp.data != null) {
       for (const comentario of resp.data) {
-        var calif=comentario.Calif;
+        var calif = comentario.Calif;
         /* Create category table row for each category on the response */
         let productcomDiv = document.createElement('div');
-        productcomDiv.className = 'review_item'; 
+        productcomDiv.className = 'review_item';
         productcomDiv.innerHTML = `<div class="media" style="margin-top:50px">
                                           <!--<div class="d-flex">
                                               <img src="img/product/review-1.png" alt="">
@@ -190,24 +170,22 @@ function getProductoInfo() {
                                           </div>
                                       </div>
                                       <p>${comentario.Comentario}</p>
-                                  
+
             `;
-            var calif=comentario.Calif;
-           var idcoment=comentario.IdCalif;
+        var calif = comentario.Calif;
+        var idcoment = comentario.IdCalif;
         document.getElementById('comentarios').appendChild(productcomDiv);
-        for (let index = 0; index<calif; index++)  {
-          
-            let productEstrellaCalif = document.createElement('i');
-            productEstrellaCalif.className = 'fa fa-star'; 
-      
-            document.getElementById(idcoment).appendChild(productEstrellaCalif);
-          }
+        for (let index = 0; index < calif; index++) {
+          let productEstrellaCalif = document.createElement('i');
+          productEstrellaCalif.className = 'fa fa-star';
+
+          document.getElementById(idcoment).appendChild(productEstrellaCalif);
+        }
       }
-    }
-    else{
-        let productSINcomDiv = document.createElement('div');
-        productSINcomDiv.className = 'review_item'; 
-        productSINcomDiv.innerHTML = `<div class="media">
+    } else {
+      let productSINcomDiv = document.createElement('div');
+      productSINcomDiv.className = 'review_item';
+      productSINcomDiv.innerHTML = `<div class="media">
                                           <div class="d-flex">
                                               <img src="" alt="">
                                           </div>
@@ -219,32 +197,31 @@ function getProductoInfo() {
                                           </div>
                                       </div>
                                       <p></p>
-                                  
+
             `;
-  
-        document.getElementById('comentarios').appendChild(productSINcomDiv);
+
+      document.getElementById('comentarios').appendChild(productSINcomDiv);
     }
-    });
-  }    
-  /*function rellenarEstrellas(calif){
+  });
+}
+/*function rellenarEstrellas(calif){
       for (let index = 0; index <= calif; index++)  {
-          
+
           let productEstrellaCalif = document.createElement('i');
-          productEstrellaCalif.className = 'fa fa-star'; 
-    
+          productEstrellaCalif.className = 'fa fa-star';
+
           document.getElementById('califEstrella').appendChild(productEstrellaCalif);
         }
   }*/
-    function miComentario(){
-        const IdArticulo = getQueryVariable('IdArticulo');
-       // const idusuario=4;
-    const idusuario = localStorage.getItem("Id_Usuario");
-    $.post('php/obtieneNombreUsuario.php', { idusuario }, response => 
-    {
+function miComentario() {
+  const IdArticulo = getQueryVariable('IdArticulo');
+  // const idusuario=4;
+  const idusuario = localStorage.getItem('Id_Usuario');
+  $.post('php/obtieneNombreUsuario.php', { idusuario }, (response) => {
     let resp = JSON.parse(response);
     //console.log(resp.data);
     let productMiComentarioDiv = document.createElement('div');
-    productMiComentarioDiv.className = 'review_box'; 
+    productMiComentarioDiv.className = 'review_box';
     productMiComentarioDiv.innerHTML = `
     <h4>Añade una Review</h4>
     <p>Tu califiación:</p>
@@ -278,49 +255,45 @@ function getProductoInfo() {
         </div>
     </form>`;
 
-    document.getElementById('miComentario').appendChild(productMiComentarioDiv); 
-
+    document.getElementById('miComentario').appendChild(productMiComentarioDiv);
   });
-    }
-    function enviarComentario(){
+}
+function enviarComentario() {
+  const idusuario = localStorage.getItem('Id_Usuario');
+  //const idusuario=4;
+  const IdArticulo = getQueryVariable('IdArticulo');
 
-        const idusuario = localStorage.getItem("Id_Usuario");
-        //const idusuario=4;
-        const IdArticulo = getQueryVariable('IdArticulo');
+  var calif = 1;
+  if (document.getElementById('radio1').checked) {
+    calif = 5;
+  }
+  if (document.getElementById('radio2').checked) {
+    calif = 4;
+  }
+  if (document.getElementById('radio3').checked) {
+    calif = 3;
+  }
+  if (document.getElementById('radio4').checked) {
+    calif = 2;
+  }
+  if (document.getElementById('radio5').checked) {
+    calif = 1;
+  }
 
-        var calif=1;
-        if(document.getElementById('radio1').checked){
-            calif=5; 
-        }
-        if(document.getElementById('radio2').checked){
-            calif=4;
-        }
-        if(document.getElementById('radio3').checked){
-            calif=3;
-        }
-        if(document.getElementById('radio4').checked){
-            calif=2;
-        }
-        if(document.getElementById('radio5').checked){
-            calif=1;
-        }
-
-        //esto no se si esta bien alv 
-        const comentario = $('textarea[id=message]').val();
-        //console.log(calif);
-        const coment = JSON.stringify({
-            idusuario,
-            IdArticulo,
-            calif, 
-            comentario
-        });
-       //alert(coment);
-       $.post('php/registrarComentario.php', {coment}, response =>{
-            let resp = JSON.parse(response);
-            //console.log(resp.message);
-           alert(resp.message)
-        });
-        location.href = 'single-product.html?IdArticulo='+IdArticulo;
-    }
-
-
+  //esto no se si esta bien alv
+  const comentario = $('textarea[id=message]').val();
+  //console.log(calif);
+  const coment = JSON.stringify({
+    idusuario,
+    IdArticulo,
+    calif,
+    comentario,
+  });
+  //alert(coment);
+  $.post('php/registrarComentario.php', { coment }, (response) => {
+    let resp = JSON.parse(response);
+    //console.log(resp.message);
+    alert(resp.message);
+  });
+  location.href = 'single-product.html?IdArticulo=' + IdArticulo;
+}

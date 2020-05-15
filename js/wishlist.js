@@ -25,6 +25,9 @@ function cargarWishList(){
                 <td>
                     <h5>${article.Descripcion}</h5>
                 </td>
+                <td>
+                    <a class="gray_btn" href="#" onclick="eliminarWishlist(${article.ID},${idUser}); return false;">Eliminar</a>
+                </td>
             `;
 
             subtotal+= parseInt(article.Precio);
@@ -43,4 +46,17 @@ function cargarWishList(){
 
         document.getElementById('wishlist').appendChild(bottomButton);
     });
+}
+
+function eliminarWishlist(IdArticle, idUser){
+    const article = JSON.stringify({
+        IdArticle,
+        idUser
+    });
+    $.post('php/deleteWish.php', { article }, response => {
+            let resp = JSON.parse(response);
+            alert(resp.message);
+            location.reload();
+        });
+        
 }

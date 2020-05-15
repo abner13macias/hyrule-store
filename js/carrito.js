@@ -26,6 +26,9 @@ function cargarCarrito(){
                     <div class="product_count">
                         <p>${article.Descripcion} </p>
                     </div>
+                </td>                
+                <td>
+                <a class="gray_btn" href="#" onclick="eliminarCarrito(${article.ID},${idUser}); return false;">Eliminar</a>
                 </td>
             `;
 
@@ -117,4 +120,16 @@ function cargarCarrito(){
         document.getElementById('carrito').appendChild(shipping);
         document.getElementById('carrito').appendChild(outButton);
     });
+}
+
+function eliminarCarrito(IdArticle, idUser){
+    const article = JSON.stringify({
+        IdArticle,
+        idUser
+    });
+    $.post('php/deleteCart.php', { article }, response => {
+            let resp = JSON.parse(response);
+            alert(resp.message);
+            location.reload();
+        });    
 }

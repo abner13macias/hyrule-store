@@ -38,7 +38,7 @@ function cargarWishList(){
         bottomButton.className = "bottom_button";
         bottomButton.innerHTML = ` 
         <td>
-            <a class="gray_btn" href="wishlist.html">Efectuar Compra</a>
+            <a class="gray_btn" href="#">Efectuar Compra</a>
         </td>
         <td>
         
@@ -57,6 +57,6 @@ function eliminarWishlist(IdArticle, idUser){
             let resp = JSON.parse(response);
             alert(resp.message);
             location.reload();
-        });
-        
+        });        
 }
+

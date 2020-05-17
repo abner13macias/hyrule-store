@@ -1,4 +1,4 @@
-async function getProductoInfo() {
+ async function getProductoInfo() {
   const productoId = getQueryVariable('IdArticulo');
 
   // const productoId = "1000";
@@ -84,6 +84,7 @@ async function getProductoInfo() {
 }
 
 function addCartButton() {
+  validarSesion();
   const idUser = localStorage.getItem('Id_Usuario');
   const idArticle = getQueryVariable('IdArticulo');
   const cantidad = document.getElementById('sst').value;
@@ -100,6 +101,7 @@ function addCartButton() {
 }
 
 function addWishList(idProducto) {
+  validarSesion();
   const idUser = localStorage.getItem('Id_Usuario');
   const idArticle = idProducto;
   const article = JSON.stringify({
@@ -214,6 +216,7 @@ function getProductoComentarios() {
         }
   }*/
 function miComentario() {
+  validarSesion();
   const IdArticulo = getQueryVariable('IdArticulo');
   // const idusuario=4;
   const idusuario = localStorage.getItem('Id_Usuario');
@@ -259,6 +262,7 @@ function miComentario() {
   });
 }
 function enviarComentario() {
+  validarSesion();
   const idusuario = localStorage.getItem('Id_Usuario');
   const IdArticulo = getQueryVariable('IdArticulo');
 
@@ -291,4 +295,12 @@ function enviarComentario() {
     alert(resp.message);
     location.href = 'single-product.html?IdArticulo=' + IdArticulo;
   });
+}
+
+function validarSesion() {
+  const idUser = localStorage.getItem('Id_Usuario');
+  if (!idUser) {
+    alert("Debes iniciar sesión primero!");
+    window.location.href = 'login.html';
+  }
 }

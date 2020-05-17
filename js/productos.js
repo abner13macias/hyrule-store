@@ -3,17 +3,12 @@ function getProductData() {
   const searchg = getQueryVariable('IdGenero');
   const searchc = getQueryVariable('IdCategoria');
   const searchmm = getQueryVariable('IdMarca');
-  console.log(searchm);
-  console.log(searchc);
-  console.log(searchg);
-  console.log(searchmm);
   if(searchmm!=""){
     const busquedam = JSON.stringify({
       searchmm
     });
     $.post('php/productosm.php', { busquedam }, response => {
       let resp = JSON.parse(response);
-      console.log(resp.message);
       for (const product of resp.data) {
         /* Create category table row for each category on the response */
         let productDiv = document.createElement('div');
@@ -60,7 +55,6 @@ function getProductData() {
     });
     $.post('php/productosc.php', { busquedac }, response => {
       let resp = JSON.parse(response);
-      console.log(resp.message);
       for (const product of resp.data) {
         /* Create category table row for each category on the response */
         let productDiv = document.createElement('div');
@@ -107,7 +101,6 @@ function getProductData() {
     });
     $.post('php/productosg.php', { busquedag }, response => {
       let resp = JSON.parse(response);
-      console.log(resp.message);
       for (const product of resp.data) {
         /* Create category table row for each category on the response */
         let productDiv = document.createElement('div');
@@ -151,10 +144,8 @@ function getProductData() {
   else{
   var search = searchm;
   if(searchm!=""){
-    console.log("no esta vacio");
     search = searchm.replace('+', ' ');
   }else{
-    console.log("esta vacio");
   }
   const busqueda = JSON.stringify({
     search
@@ -162,7 +153,6 @@ function getProductData() {
 
     $.post('php/productos.php', { busqueda }, response => {
       let resp = JSON.parse(response);
-      console.log(resp.message);
       for (const product of resp.data) {
         /* Create category table row for each category on the response */
         let productDiv = document.createElement('div');
@@ -208,7 +198,6 @@ function getProductData() {
     //Consultar Categorias
     $.post('php/obtieneCategorias.php', response => {
       let resp = JSON.parse(response);
-      console.log("funciono");
       for (const product of resp.data) {
         /* Create category table row for each category on the response */
         let productDiv = document.createElement('ul');
@@ -229,7 +218,6 @@ function getProductData() {
 
     $.post('php/obtieneGeneros.php', response => {
       let resp = JSON.parse(response);
-      console.log("funciono");
       for (const product of resp.data) {
         /* Create category table row for each category on the response */
         let productDiv = document.createElement('ul');
@@ -251,6 +239,7 @@ function getProductData() {
   }
 
 function addWishList(idArticulo){
+    validarSesion();
     const idArticle = idArticulo;
     const idUser = localStorage.getItem("Id_Usuario");
     
@@ -265,6 +254,7 @@ function addWishList(idArticulo){
 }
 
   function addCart(idArticulo){
+    validarSesion();
     const idArticle = idArticulo;
     const idUser = localStorage.getItem("Id_Usuario");
 
@@ -288,4 +278,12 @@ function addWishList(idArticulo){
       }
     }
     return false;
+  }
+
+  function validarSesion() {
+    const idUser = localStorage.getItem('Id_Usuario');
+    if (!idUser) {
+      alert("Debes iniciar sesión primero!");
+      window.location.href = 'login.html';
+    }
   }

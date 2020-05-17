@@ -12,7 +12,7 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-	<title>Preguntas Frecuentes</title>
+	<title>Bienvenido</title>
 
     <!--
             CSS
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body onload="validarSesionLogin()">
 
     <!-- Start Header Area -->
 	<header class="header_area sticky-header">
@@ -46,22 +46,22 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
-							<li class="nav-item"><a class="nav-link" href="category.html">Comprar</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Comprar</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Perfil</a>
 								<ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" href="cart.html">Carrito</a></li>
 									<li class="nav-item"><a class="nav-link" href="wishlist.html">Wishlist</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="tracking.html">Rastreo</a></li>
-									<li class="nav-item"><a class="nav-link" href="#" onclick="logOut(); return false;">Cerrar Sesión</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Rastreo</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">Cerrar Sesión</a></li>
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="cart.html" class="cart"><span class="ti-bag"></span></a></li>
-                            <li class="nav-item"><a href="category.html"class="cart" ><span class="lnr lnr-magnifier"></span></a></li>
+							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+                            <li class="nav-item"><a href="#"class="cart" ><span class="lnr lnr-magnifier"></span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -77,6 +77,7 @@
 			</div>
 		</div>
 	</header>
+
 	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->
@@ -84,10 +85,10 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1 style="color: black">Preguntas Frecuentes</h1>
-				<!--<nav class="d-flex align-items-center">
-						<a href="index.html" style="color: black">Inicio<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html" style="color: black">Contacto</a>-->	
+					<h1 style="color: black">Bienvenido</h1>
+					<nav class="d-flex align-items-center">
+						<a href="#" style="color: black">Inicio<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#" style="color: black">Login</a>
 					</nav>
 				</div>
 			</div>
@@ -95,28 +96,43 @@
 	</section>
 	<!-- End Banner Area -->
 
-	<!--================ Preguntas Area =================-->
-	<section class="contact_area section_gap_bottom">
-		<div class="container" style="margin-right:15px; margin-top:50px">
-            <div class="info_item">  
-                <h3><a style="color: #c55a10">✦</a>Pregunta 1</h3>
-				<p>Respuesta </p>
-            </div>
-            <div class="info_item">  
-                <h3><a style="color: #c55a10">✦</a>Pregunta 2</h3>
-				<p>Respuesta </p>
-            </div>
-            <div class="info_item">  
-                <h3><a style="color: #c55a10">✦</a>Pregunta 3</h3>
-				<p>Respuesta </p>
-            </div>
-            <div class="info_item">  
-                <h3><a style="color: #c55a10">✦</a>Pregunta 4</h3>
-				<p>Respuesta </p>
-            </div>
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="img/login.jpg" alt="">
+						<div class="hover">
+							<h4>Nuevo en nuesto sitio web?</h4>
+							<p>IT'S DANGEROUS TO GO ALONE. Videojuegos, accesorios, consolas y mucho más al mejor precio.</p>
+							<a class="primary-btn" href="register.html">Crear Una Cuenta</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner">
+						<h3>Iniciar Sesión</h3>
+						<form form action="php/login.php" method="post" class="row login_form" id="contactForm" novalidate="novalidate">
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+							</div>
+							<div class="col-md-12 form-group">
+							</div>
+							<div id="recaptcha" class="g-recaptcha col-md-12 form-group" data-sitekey="6LfHoO8UAAAAANjt-h5XLw0ZeCqQNeuRg6JvmdFO"></div>
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="primary-btn">Iniciar Sesión</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
-	<!--================ Preguntas Area =================-->
+	<!--================End Login Box Area =================-->
 
 	<!-- start footer Area -->
 	<footer class="footer-area section_gap">
@@ -134,10 +150,10 @@
 					<div class="single-footer-widget">
 						<h6>No olvides contactarnos por los siguentes medios</h6>
                         <i class="lnr lnr-phone-handset"></i>
-						<p>Telefono +52 (449) 512 1532</p> 
+						<p>Telefono +52 (449) 390 6033</p> 
                             <br>
                         <i class="lnr lnr-envelope"></i>
-                        <p>support@HyruleStore.com</p>
+                        <p>ventas@hyrulestoreita.com</p>
 						<div class="" id="mc_embed_signup">
 								<div class="d-flex flex-row">
                                     
@@ -167,39 +183,33 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
 		</div>
 	</footer>
-	<!-- End footer Area -->
 
-	<!--================Contact Success and Error message Area =================-->
-	<div id="success" class="modal modal-message fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<i class="fa fa-close"></i>
-					</button>
-					<h2>Thank you</h2>
-					<p>Your message is successfully sent...</p>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v7.0'
+          });
+        };
 
-	<!-- Modals error -->
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
 
-	<div id="error" class="modal modal-message fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<i class="fa fa-close"></i>
-					</button>
-					<h2>Sorry !</h2>
-					<p> Something went wrong </p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--================End Contact Success and Error message Area =================-->
+      <!-- Your customer chat code -->
+      <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="100112641690245"
+  logged_in_greeting="Hola, ¿Cómo puedo ayudarte?"
+  logged_out_greeting="Hola, ¿Cómo puedo ayudarte?">
+      </div>
+
+<!-- End footer Area -->
 
 
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
@@ -217,6 +227,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/login.js"></script>
+	<script async src='https://www.google.com/recaptcha/api.js?hl=es'></script>
 </body>
 
 </html>

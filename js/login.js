@@ -50,7 +50,7 @@ function validarPIN() {
   $.post('php/validarPIN.php', { user }, (response) => {
     let resp = JSON.parse(response);
     if (resp.message == 'Se encontró el PIN') {
-      window.location.href = 'main.html?Id_Usuario=' + idUser;
+      window.location.href = 'index.html?Id_Usuario=' + idUser;
     } else {
       alert('PIN Incorrecto');
     }
@@ -76,7 +76,15 @@ function logOut() {
 
 function validarSesion() {
   const idUser = localStorage.getItem('Id_Usuario');
+  if (!idUser) {
+    window.location.href = 'index.html';
+  }
+}
+
+function validarSesionLogin(){
+  const idUser = localStorage.getItem('Id_Usuario');
   if (idUser) {
-    window.location.href = 'main.html';
+    alert("Debes iniciar sesión primero!");
+    window.location.href = 'login.html';
   }
 }

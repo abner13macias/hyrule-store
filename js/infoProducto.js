@@ -216,7 +216,6 @@ function getProductoComentarios() {
         }
   }*/
 function miComentario() {
-  validarSesion();
   const IdArticulo = getQueryVariable('IdArticulo');
   // const idusuario=4;
   const idusuario = localStorage.getItem('Id_Usuario');

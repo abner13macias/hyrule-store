@@ -77,14 +77,15 @@ function logOut() {
 function validarSesion() {
   const idUser = localStorage.getItem('Id_Usuario');
   if (!idUser) {
-    window.location.href = 'index.html';
+    alert("Debes iniciar sesión primero!");
+    window.location.href = 'login.html';
   }
 }
 
 function validarSesionLogin(){
   const idUser = localStorage.getItem('Id_Usuario');
   if (idUser) {
-    alert("Debes iniciar sesión primero!");
-    window.location.href = 'login.html';
+    
+    window.location.href = 'index.html';
   }
 }

@@ -3,10 +3,8 @@
     session_start();
     require_once 'config.php';
     $userObj = json_decode($_POST['carrito']);
-    date_default_timezone_set('/America/Mexico_City');
-    $fechahoy=date("Y-m-d");
     //$hashedPass = password_hash($userObj->pass, PASSWORD_DEFAULT);
-    $query = "INSERT INTO `venta`(`Total`, `Status`, `Fecha`, `Id_Carrito`) VALUES ('$userObj->totalc','$userObj->status','$fechahoy','$userObj->idcarrito')";
+    $query = "UPDATE `carrito` SET `Status`= 'Desactivo'  WHERE `IdCarrito` = '$userObj->idcarrito'";
 
     
     if (!isset($response)) {

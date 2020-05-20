@@ -6,6 +6,7 @@ function cargarTicket(){
     $.post('php/checkout.php', { compra }, response => {
         let resp = JSON.parse(response);
         var subtotal = 0;
+        var idcarrito;
         for(const article of resp.data){
             let articleTR = document.createElement('li');
             articleTR.innerHTML = ` 
@@ -13,6 +14,7 @@ function cargarTicket(){
             `;
             subtotal+= parseInt(article.Subtotal);
             document.getElementById('ticket').appendChild(articleTR);
+            idcarrito=article.IdCarrito;
         }
 
         let ticket2 = document.createElement('li');
@@ -33,6 +35,11 @@ function cargarTicket(){
         `;
         document.getElementById('ticket2').appendChild(total);
          console.log(subtotal+105);
+        
+        const totalc = subtotal+105;
+        const status = 'Finalizado';
+        const fecha = '2020-19-05';
+
                                   paypal.Buttons({
                                       style: {
                                           shape: 'rect',
@@ -42,6 +49,8 @@ function cargarTicket(){
                                 
                                       },
                                       createOrder: function(data, actions) {
+                                        
+                                        registrarventafinalizada(totalc,status,fecha,idcarrito);
                                           return actions.order.create({
                                               purchase_units: [{
                                                   amount: {
@@ -50,23 +59,11 @@ function cargarTicket(){
                                               }]
                                           });
                                       },
+                                      
                                       onApprove: function(data, actions) {
-                                          const total = subtotal+105;
-                                          const status = 'Finalizado';
-                                          const fecha = getDate();
-                                          const idcarrito = article.idcarrito;
-
-                                        const carrito = JSON.stringify({
-                                            total,
-                                            status,
-                                            fecha,
-                                            idcarrito
-                                            
-                                        });
-                                        $.post('php/registrarventa.php', { carrito }, response => {
-                                            let resp = JSON.parse(response);
-                                            alert(resp.message);
-                                        });
+                                          
+                                        
+                                       
 
                                           return actions.order.capture().then(function(details) {
                                               alert('Transaction completed by ' + details.payer.name.given_name + '!');
@@ -75,4 +72,24 @@ function cargarTicket(){
                                   }).render('#paypal-button-container');
         
     });
+}
+
+function registrarventafinalizada(totalc,status,fecha,idcarrito){
+    const carrito = JSON.stringify({
+        totalc,
+        status,
+        fecha,
+        idcarrito
+    });
+    $.post('php/registrarventa.php',{ carrito }, response => {
+        let resp = JSON.parse(response);
+        
+    });
+
+    $.post('php/modificarstatuscarrito.php',{ carrito }, response => {
+        let resp = JSON.parse(response);
+        
+    });
+
+
 }

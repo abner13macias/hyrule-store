@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once 'config.php';
-    $query = "SELECT * FROM `correos`";
+    $query = "SELECT * FROM `correos` ORDER BY IdCorreo DESC";
     $result = mysqli_query($db,$query);
 
     if (!isset($response)) {

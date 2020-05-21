@@ -15,7 +15,7 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-	<title>Hyrule Store</title>
+    <title>Hyrule Store</title>
 
     <!--
             CSS
@@ -33,54 +33,52 @@
 <body onload="cargarTicket()">
 
     <!-- Start Header Area -->
-	<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
-							<li class="nav-item"><a class="nav-link" href="category.html">Comprar</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Perfil</a>
-								<ul class="dropdown-menu">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="category.html">Comprar</a></li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil</a>
+                                <ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" href="cart.html">Carrito</a></li>
-									<li class="nav-item"><a class="nav-link" href="wishlist.html">Wishlist</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="wishlist.html">Wishlist</a></li>
                                     <li class="nav-item"><a class="nav-link" href="tracking.html">Rastreo</a></li>
-									<li class="nav-item"><a class="nav-link" href="index.html" onclick="logOut(); return false;">Cerrar Sesión</a></li>
-								</ul>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="cart.html" class="cart"><span class="ti-bag"></span></a></li>
-                            <li class="nav-item"><a href="category.html"class="cart" ><span class="lnr lnr-magnifier"></span></a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<div class="search_input" id="search_input_box">
-			<div class="container">
-				<form class="d-flex justify-content-between">
-					<input type="text" class="form-control" id="search_input" placeholder="Search Here">
-					<button type="submit" class="btn"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-				</form>
-			</div>
-		</div>
-	</header>
-	<!-- End Header Area -->
+                                    <li class="nav-item"><a class="nav-link" href="index.html" onclick="logOut(); return false;">Cerrar Sesión</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item"><a href="cart.html" class="cart"><span class="ti-bag"></span></a></li>
+                            <li class="nav-item"><a href="category.html" class="cart"><span class="lnr lnr-magnifier"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="search_input" id="search_input_box">
+            <div class="container">
+                <form class="d-flex justify-content-between">
+                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                    <button type="submit" class="btn"></button>
+                    <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+                </form>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
 
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
@@ -100,42 +98,40 @@
 
     <!--================Checkout Area =================-->
     <section class="checkout_area section_gap">
-        <div class="container">            
+        <div class="container">
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-8">
                         <h3>Detalles De Facturacion</h3>
                         <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="first" name="name">
-                                <span class="placeholder" data-placeholder="Nombre"></span>
+                                <input type="text" disabled="disabled" class="form-control" id="first" name="name">
+                                <span class="placeholder" data-placeholder=""></span>
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="last" name="name">
-                                <span class="placeholder" data-placeholder="Apellidos"></span>
+                                <input type="text" disabled="disabled" class="form-control" id="last" name="apepa">
+                                <span class="placeholder" data-placeholder=""></span>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="company" name="company" placeholder="Nombre de la compañia">
+
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="number" name="number">
-                                <span class="placeholder" data-placeholder="Numero De Telefono"></span>
+                                <input type="text" disabled="disabled" class="form-control" id="number" name="tel">
+                                <span class="placeholder" data-placeholder=""></span>
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="email" name="compemailany">
-                                <span class="placeholder" data-placeholder="Correo Electronico"></span>
+                                <input type="text" disabled="disabled" class="form-control" id="email" name="correo">
+                                <span class="placeholder" data-placeholder=""></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="add1" name="add1">
-                                <span class="placeholder" data-placeholder="Direccion"></span>
+                                <input type="text" disabled="disabled" class="form-control" id="add1" name="direccion">
+                                <span class="placeholder" data-placeholder=""></span>
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">
-                                    <h3>Detalles De Envio</h3>
-                                    <input type="checkbox" id="f-option3" name="selector">
-                                    <label for="f-option3">Enviar a una direccion diferente?</label>
+
                                 </div>
-                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Notas extras"></textarea>
+
                             </div>
                         </form>
                     </div>
@@ -149,7 +145,7 @@
                             <ul class="list list_2" id="ticket2">
                                 <!-- Carga Total -->
                             </ul>
-                           <!-- <div class="payment_item">
+                            <!-- <div class="payment_item">
                                 <div class="radion_btn">
                                     <input type="radio" id="f-option5" name="selector">
                                     <label for="f-option5">Tarjeta De Credito</label>
@@ -167,18 +163,16 @@
                                 <p>Pagar via PayPal; puedes pagar con tarjeta de credito si no cuentas con cuenta de PayPal.</p>
                             </div>-->
                             <div class="creat_account">
-                                <input type="checkbox" id="f-option4" name="selector">
-                                <label for="f-option4">He leido y acepto</label>
-                                <a href="#">terminos y condiciones*</a>
+
                             </div>
-                            
+
                             <div id="paypal-button-container"></div>
                             <script src="https://www.paypal.com/sdk/js?client-id=AVbWyaY8V3e4LlbuKFEV3wLDtBAadSSEz3MaCyVYeEeRbUZHukfS8TZ268OMi-qrXXPzMwEloAHqvRkA&currency=MXN" data-sdk-integration-source="button-factory"></script>
-                            
-                            
+
+
                         </div>
 
-                        
+
                     </div>
 
                 </div>
@@ -189,60 +183,63 @@
 
     <!-- start footer Area -->
     <footer class="footer-area section_gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4  col-md-4 col-sm-4">
-					<div class="single-footer-widget">
-						<h6>Acerca de nosotros</h6>
-						<p>
-							Hyrule Store es una página de venta de videojuegos con 5 años de experiencia la cual está encargada de brindar un servicio de calidad.
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4  col-md-4 col-sm-4">
+                    <div class="single-footer-widget">
+                        <h6>Acerca de nosotros</h6>
+                        <p>
+                            Hyrule Store es una página de venta de videojuegos con 5 años de experiencia la cual está encargada de brindar un servicio de calidad.
                         </p>
                         <a href="preguntasFrecuentes.html"><u style="color:white;">Preguntas Frecuentes</u></a>
-					</div>
-				</div>
-				<div class="col-lg-5  col-md-5 col-sm-5">
-					<div class="single-footer-widget">
-						<h6>No olvides contactarnos por los siguentes medios</h6>
+                    </div>
+                </div>
+                <div class="col-lg-5  col-md-5 col-sm-5">
+                    <div class="single-footer-widget">
+                        <h6>No olvides contactarnos por los siguentes medios</h6>
                         <i class="lnr lnr-phone-handset"></i>
-						<p>Telefono +52 (449) 390 6033</p> 
-                            <br>
+                        <p>Telefono +52 (449) 390 6033</p>
+                        <br>
                         <i class="lnr lnr-envelope"></i>
                         <p>ventas@hyrulestoreita.com</p>
-						<div class="" id="mc_embed_signup">
-								<div class="d-flex flex-row">
-                                    
-								</div>
-								<div class="info"></div>
-							</form>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-3  col-md-3 col-sm-3">
-					<div class="single-footer-widget">
-						<h6>Siguenos en</h6>
-						<div class="footer-social d-flex align-items-center">
-							<a href="https://www.facebook.com/HyruleStoreOficial/"><i class="fa fa-facebook"></i></a>
-							<a href="https://www.twitter.com/hyrule_store/"><i class="fa fa-twitter"></i></a>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-				<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-			</div>
-		</div>
-	</footer>
+                        <div class="" id="mc_embed_signup">
+                            <div class="d-flex flex-row">
+
+                            </div>
+                            <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3  col-md-3 col-sm-3">
+                    <div class="single-footer-widget">
+                        <h6>Siguenos en</h6>
+                        <div class="footer-social d-flex align-items-center">
+                            <a href="https://www.facebook.com/HyruleStoreOficial/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.twitter.com/hyrule_store/"><i class="fa fa-twitter"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                <p class="footer-text m-0">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> All rights reserved
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </footer>
     <!-- End footer Area -->
 
 
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>

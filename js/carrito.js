@@ -74,26 +74,7 @@ function cargarCarrito(){
         <td>
 
         </td>
-        <td>
-            <h5>Envio</h5>
-        </td>
-        <td>
-            <div class="shipping_box">
-                <ul class="list">
-                    <li><a href="#">Envio FULL $250.00</a></li>
-                    <li><a href="#">Envio gratis</a></li>
-                    <li><a href="#">Envio a sucursal $120.00</a></li>
-                    <li class="active"><a href="#">: $2.00</a></li>
-                </ul>
-                <h6>Calcular envio <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
-                <select class="shipping_select">
-                    <option value="1">Seleccionar Estado</option>
-                    <option value="2">Seleccionar Estado</option>
-                    <option value="4">Seleccionar Estado</option>
-                </select>
-                <input type="text" placeholder="Codigo Postal">                
-            </div>
-        </td>
+        
         `;
 
         let outButton = document.createElement('tr');

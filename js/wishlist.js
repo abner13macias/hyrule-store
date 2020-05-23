@@ -34,7 +34,7 @@ function cargarWishList(){
             document.getElementById('wishlist').appendChild(articleTR);
         }
 
-        let bottomButton = document.createElement('tr');
+        /*let bottomButton = document.createElement('tr');
         bottomButton.className = "bottom_button";
         bottomButton.innerHTML = ` 
         <td>
@@ -42,7 +42,8 @@ function cargarWishList(){
         </td>
         <td>
         
-        ` ;       
+        ` ;    
+        */   
 
         document.getElementById('wishlist').appendChild(bottomButton);
     });

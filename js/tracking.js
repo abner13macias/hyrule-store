@@ -17,7 +17,7 @@ function getTrackingData() {
         $('#response-message-container').addClass('error');
     }
 });
-  
+window.scrollTo(0,350)
   }
 
 

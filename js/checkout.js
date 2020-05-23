@@ -3,6 +3,26 @@ function cargarTicket() {
     const compra = JSON.stringify({
         idUser
     });
+    var nombreuser, emailuser, direccionuser;
+    $.post('php/obtieneDatosUser.php', { compra }, response => {
+        let resp = JSON.parse(response);
+        if (resp.data) {
+            $('input[name=name]').val(resp.data.Nombre);
+            $('input[name=apepa]').val(resp.data.ApellidoPaterno);
+            $('input[name=tel]').val(resp.data.Telefono);
+            $('input[name=correo]').val(resp.data.Email);
+            $('input[name=direccion]').val(resp.data.Direccion);
+            nombreuser=resp.data.Nombre;
+            emailuser=resp.data.Email;
+            direccionuser=resp.data.Direccion;
+        } else {
+            $('#response-message-container').html(
+                'No se pudo obtener la informacion del usuario seleccionado'
+            );
+            $('#response-message-container').addClass('error');
+        }
+    });
+
     $.post('php/checkout.php', { compra }, response => {
         let resp = JSON.parse(response);
         var subtotal = 0;
@@ -37,7 +57,7 @@ function cargarTicket() {
         console.log(subtotal + 105);
 
         const totalc = subtotal + 105;
-        const status = 'Finalizado';
+        const status = 'Proceso';
         const fecha = '2020-19-05';
 
         paypal.Buttons({
@@ -50,7 +70,7 @@ function cargarTicket() {
             },
             createOrder: function(data, actions) {
 
-                registrarventafinalizada(totalc, status, fecha, idcarrito);
+                registrarventafinalizada(totalc, status, fecha, idcarrito, nombreuser,emailuser,direccionuser);
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
@@ -73,30 +93,20 @@ function cargarTicket() {
 
     });
 
-    $.post('php/obtieneDatosUser.php', { compra }, response => {
-        let resp = JSON.parse(response);
-        if (resp.data) {
-            $('input[name=name]').val(resp.data.Nombre);
-            $('input[name=apepa]').val(resp.data.ApellidoPaterno);
-            $('input[name=tel]').val(resp.data.Telefono);
-            $('input[name=correo]').val(resp.data.Email);
-            $('input[name=direccion]').val(resp.data.Direccion);
-        } else {
-            $('#response-message-container').html(
-                'No se pudo obtener la informacion del usuario seleccionado'
-            );
-            $('#response-message-container').addClass('error');
-        }
-    });
+
 }
 
 
-function registrarventafinalizada(totalc, status, fecha, idcarrito) {
+function registrarventafinalizada(totalc, status, fecha, idcarrito, nombreuser, emailuser, direccionuser) {
+    var idventa, fechav;
     const carrito = JSON.stringify({
         totalc,
         status,
         fecha,
-        idcarrito
+        idcarrito,
+        nombreuser,
+        emailuser,
+        direccionuser
     });
     $.post('php/registrarventa.php', { carrito }, response => {
         let resp = JSON.parse(response);
@@ -105,6 +115,36 @@ function registrarventafinalizada(totalc, status, fecha, idcarrito) {
 
     $.post('php/modificarstatuscarrito.php', { carrito }, response => {
         let resp = JSON.parse(response);
+
+    });
+
+    $.post('php/consultaridventa.php', { carrito }, response => {
+        let resp = JSON.parse(response);
+        if (resp.data) {
+            idventa=resp.data.Id_Venta;
+            fechav=resp.data.Fecha;
+            console.log(idventa);
+            console.log(fechav);
+            enviarcorreo(nombreuser, emailuser, direccionuser,idventa,fechav);
+        } else {
+            console.log("Error consultando id venta");
+        }
+    });
+
+    
+}
+
+function enviarcorreo(nombreuser, emailuser, direccionuser,idventa,fechav){
+    const carritoventa = JSON.stringify({
+        nombreuser,
+        emailuser,
+        direccionuser,
+        idventa,
+        fechav
+    });
+    console.log(carritoventa);
+    $.post('php/enviarcorreoventa.php', { carritoventa }, response => {
+        
 
     });
 }

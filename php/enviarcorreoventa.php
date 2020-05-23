@@ -2,11 +2,13 @@
 //Pendiente
     session_start();
     require_once 'config.php';
-    $userObj = json_decode($_POST['carrito']);
-    /*$from = 'hyrulest@mx62.hostgator.mx';
+    $userObj = json_decode($_POST['carritoventa']);
+    $from = 'hyrulest@mx62.hostgator.mx';
     $name = $userObj->nombreuser;
     $subject = 'Su producto va en camino.';
     $cmessage = $userObj->direccionuser;
+    $cfmessage = $userObj->fechav;
+    $ccmessage = $userObj->idventa;
 
     $headers = "From: $from";
 	$headers = "From: " . $from . "\r\n";
@@ -29,7 +31,7 @@
 	$body .= "</tr>";
 	$body .= "<tr><td style='border:none;'><strong>Asunto:</strong> {$subject}</td></tr>";
 	$body .= "<tr><td></td></tr>";
-    $body .= "<tr><td colspan='2' style='border:none;'>Su envio a {$cmessage} se encuenta en proceso</td></tr>";
+    $body .= "<tr><td colspan='2' style='border:none;'>Su compra de la fecha {$cfmessage} a sido exitosa. Su envio a {$cmessage} se encuenta en proceso, este es su codigo de seguimiento: {$ccmessage}</td></tr>";
     $body .= "<thead style='text-align: center;'><tr><td bgcolor='ededed' style='border:none;' colspan='2'>";
 	$body .= "<br><br>";
 	$body .= "</td></tr></thead><tbody><tr>";
@@ -37,25 +39,4 @@
 	$body .= "</body></html>";
 
     $send = mail($userObj->emailuser, 'Su producto va en camino.', $body, $headers);
-    */
-    date_default_timezone_set('/America/Mexico_City');
-    $fechahoy=date("Y-m-d");
-    //$hashedPass = password_hash($userObj->pass, PASSWORD_DEFAULT);
-    $query = "INSERT INTO `venta`(`Total`, `Status`, `Fecha`, `Id_Carrito`) VALUES ('$userObj->totalc','$userObj->status','$fechahoy','$userObj->idcarrito')";
-
     
-    if (!isset($response)) {
-        $response = new stdClass();
-    }
-
-    if(mysqli_query($db, $query)) {
-        //$response->message = 'Fuiste dado de alta exitosamente!';
-        $response->class = 'success';
-        echo json_encode($response);
-        mysqli_close($db);
-    } else {
-        //$response->message = 'Hubo un error, intenta más tarde.';
-        $response->class = 'error';
-        echo json_encode($response);
-        mysqli_close($db);
-    }

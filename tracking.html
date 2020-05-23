@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body onload="getTrackingData()">
 
     <!-- Start Header Area -->
 	<header class="header_area sticky-header">
@@ -99,18 +99,20 @@
     <section class="tracking_box_area section_gap">
         <div class="container">
             <div class="tracking_box_inner">
-                <p>Para rastrear una orden, ingrese su ID de Orden en el campo vacio junto al email de facturacion.</p>
-                <form class="row tracking_form" action="#" method="post" novalidate="novalidate">
+                <p>Para rastrear una orden, ingrese su ID de Orden en el campo vacio.</p>
+                <form class="row tracking_form">
                     <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="order" name="order" placeholder="ID de Orden" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Order ID'">
+                        <input type="text" class="form-control" id="search_order" name="search_order" value="" placeholder="ID de Orden" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Order ID'">
                     </div>
+                    
                     <div class="col-md-12 form-group">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email de facturacion" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Billing Email Address'">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <button type="submit" value="submit" class="primary-btn">Rastrear orden</button>
-                    </div>
-                </form>
+                        <button type="submit" class="primary-btn" onload="getTrackingData()">Rastrear orden</button>
+					</div>
+					
+				</form>
+				<div class="col-md-12 form-group" id="rastreo">
+					<input type="text" class="form-control" id="orderid" name="orderid" value="hola" disabled>
+				</div>
             </div>
         </div>
     </section>
@@ -185,6 +187,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/tracking.js"></script>
 </body>
 
 </html>

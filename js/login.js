@@ -89,3 +89,22 @@ function validarSesionLogin(){
     window.location.href = 'index.html';
   }
 }
+
+function agregarbotones(){
+    
+    const idUser = localStorage.getItem('Id_Usuario');
+   
+    var d = document.getElementById("padre");
+    
+    if(idUser){
+        var d_nested = document.getElementById("btnISesion");
+        var throwawayNode = d.removeChild(d_nested);
+    }
+    else{
+        var d_nested = document.getElementById("btnCSesion");
+        var throwawayNode = d.removeChild(d_nested);
+    }
+    
+var throwawayNode = d.removeChild(d_nested);
+    
+}

@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body onload="validarSesion()">
+<body onload="validarSesion(); agregarbotones();">
 
     <!-- Start Header Area -->
 	<header class="header_area sticky-header">
@@ -50,11 +50,12 @@
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Perfil</a>
-								<ul class="dropdown-menu">
+								<ul class="dropdown-menu" id="padre">
+                                    <li class="nav-item" id="btnISesion"><a class="nav-link" href="login.html">login</a></li>
                                     <li class="nav-item"><a class="nav-link" href="cart.html">Carrito</a></li>
 									<li class="nav-item"><a class="nav-link" href="wishlist.html">Wishlist</a></li>
                                     <li class="nav-item"><a class="nav-link" href="tracking.html">Rastreo</a></li>
-									<li class="nav-item"><a class="nav-link" href="index.html" onclick="logOut(); return false;">Cerrar Sesión</a></li>
+                                    <li class='nav-item' id="btnCSesion"><a class="nav-link" href="#" onclick="logOut(); return false;">Cerrar Sesión</a></li>
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
